@@ -37,10 +37,26 @@ Sign up, specify preferences and loacation - generate tailored event list.
 
 From within the root directory:
 
-```sh
-
+---
+ 
+Start the development server with this command:
+ 
+```
+npm start
+```
+ 
+Setup
+---
+ 
+```
 npm install
-
+```
+ 
+Compile
+---
+ 
+```
+npm run compile
 ```
 
 ### Roadmap
