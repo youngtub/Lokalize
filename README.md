@@ -38,9 +38,9 @@ Sign up, specify preferences and loacation - generate tailored event list.
 From within the root directory:
 
 ```sh
-sudo npm install -g bower
+
 npm install
-bower install
+
 ```
 
 ### Roadmap
