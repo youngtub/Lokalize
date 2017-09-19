@@ -9,6 +9,7 @@ const Events = sequelize.define('event', {
     autoIncrement: true
   },
   name: Sequelize.STRING,
+  dinnerType: Sequelize.STRING,
   date: Sequelize.DATE,
   location: Sequelize.ARRAY(Sequelize.INTEGER),
   capacity: Sequelize.INTEGER,
