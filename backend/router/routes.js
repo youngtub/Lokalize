@@ -8,7 +8,7 @@ const searchHandler = require('../controllers/searchHandler');
 
 router.post('/signup', signupHandler.handleSignup);
 
-// router.get('/login', loginHandler);
+router.post('/login', loginHandler.handleLogin);
 
 // router.get('/logout'); //need to destroy session
 
