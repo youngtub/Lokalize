@@ -13,8 +13,7 @@ const Events = sequelize.define('event', {
   dinnerType: Sequelize.STRING,
   date: Sequelize.DATEONLY,
   location: Sequelize.ARRAY(Sequelize.FLOAT),
-  capacity: Sequelize.INTEGER,
-  dinnerType: Sequelize.STRING
+  capacity: Sequelize.INTEGER
 }, {
   timestamps: false
 });

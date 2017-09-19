@@ -6,7 +6,7 @@ const loginHandler = require('../controllers/loginHandler');
 const formHandler = require('../controllers/formHandler');
 const searchHandler = require('../controllers/searchHandler');
 
-// router.post('/signup', signupHandler);
+router.post('/signup', signupHandler.handleSignup);
 
 // router.get('/login', loginHandler);
 
