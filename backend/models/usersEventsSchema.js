@@ -1,9 +1,9 @@
-const User = require('./userSchema');
-const Events = require('./eventSchema');
 const Sequelize = require('sequelize');
 const sequelize = require('../db.js');
+const Users = require('./userSchema');
+const Events = require('./eventSchema');
 
-const Participation = sequelize.define('participation', {
+const Participation = sequelize.define('participations', {
   participation_id: {
     type: Sequelize.INTEGER,
     primaryKey: true,
@@ -11,8 +11,8 @@ const Participation = sequelize.define('participation', {
   }
 });
 
-Participation.hasMany(Events); //import events foreign key (events_uuid)
-Participation.hasMany(User); //import users foreign key (users_uuid)
+Participation.belongsTo(Events); //import events foreign key (events_uuid)
+Participation.belongsTo(Users); //import users foreign key (users_uuid)
 
 // create the table in db
 

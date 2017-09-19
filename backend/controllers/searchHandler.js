@@ -1,0 +1,31 @@
+const express = require('express');
+const Sequelize = require('sequelize');
+const Events = require('../models/eventSchema');
+const parser = require('body-parser');
+
+/*
+address
+date
+type
+*/
+
+exports.searchEvents = (req, res) => {
+  var address = req.body.address;
+  var date = req.body.date;
+  var type = req.body.type;
+
+  Events.findAll({
+    where: {
+      date: date,
+      location: address,
+      dinnerType: type
+    }
+  })
+  .then( (events) => {
+    if (events.length > 0) {
+      res.send(events);
+    } else {
+      res.send('There were no events matching your search, but we encourage you to be the first!')
+    }
+  })
+};

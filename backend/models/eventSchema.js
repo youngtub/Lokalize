@@ -1,9 +1,9 @@
-const User = require('./userSchema');
+const Users = require('./userSchema');
 const Sequelize = require('sequelize');
 const sequelize = require('../db.js');
 
-const Events = sequelize.define('event', {
-  event_id: {
+const Events = sequelize.define('events', {
+  id: {
     type: Sequelize.INTEGER,
     primaryKey: true,
     autoIncrement: true
@@ -11,13 +11,13 @@ const Events = sequelize.define('event', {
   name: Sequelize.STRING,
   dinnerType: Sequelize.STRING,
   date: Sequelize.DATE,
-  location: Sequelize.ARRAY(Sequelize.INTEGER),
+  location: Sequelize.ARRAY(Sequelize.FLOAT),
   capacity: Sequelize.INTEGER,
 }, {
   timestamps: false
 });
 
-Events.hasOne(User); //defining one user to many event relationship + using foreign key (user_id) here
+Events.belongsTo(Users); //defining one user to many event relationship + using foreign key (user_id) here
 
 // create the table in db
 
