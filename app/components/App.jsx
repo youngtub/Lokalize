@@ -18,7 +18,6 @@ class App extends React.Component {
           <Route exact path='/home' component={Home}/>
           <Route exact path='/join' component={Join}/>
           <Route exact path='/host' component={Host}/>
-          <Route path='*' component={Home}/>
         </Switch>
       </div>
     )
