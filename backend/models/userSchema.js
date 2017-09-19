@@ -16,7 +16,7 @@ const User = sequelize.define('users', {
 // create the table in db
 
 User.sync({ force: false })
-  .then( () => {
+  .then(() => {
     console.log('Users table created');
   })
   .catch( (err) => console.error('In USER table', err))

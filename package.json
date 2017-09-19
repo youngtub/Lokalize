@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "npm install && nodemon server.js",
+    "start": "nodemon server.js",
     "compile": "webpack",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -29,6 +29,7 @@
     "classnames": "^2.2.5",
     "css-loader": "^0.28.7",
     "express": "^4.15.4",
+    "node-geocoder": "^3.20.0",
     "normalize.css": "^5.0.0",
     "pg": "6.4.1",
     "react": "^15.6.1",
