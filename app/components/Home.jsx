@@ -1,8 +1,8 @@
 import React from 'react';
 import Weather from './subComponents/Weather.jsx';
 import Search from './subComponents/Search.jsx';
-import Map from './subComponents/Map.jsx';
-import Calendar from './subComponents/Calendar.jsx';
+import MapWithADirectionsRenderer from './subComponents/Map.jsx';
+// import Calendar from './subComponents/Calendar.jsx';
 import Myevents from './subComponents/Myevents.jsx';
 
 class Home extends React.Component {
@@ -12,7 +12,11 @@ class Home extends React.Component {
 
   render() {
     return (
-      <Weather />
+      <div> 
+        <Weather />,
+        <MapWithADirectionsRenderer />,
+       
+      </div>
     )
   }
 }

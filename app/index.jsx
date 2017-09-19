@@ -7,7 +7,7 @@ import Home from './components/Home.jsx';
 
 document.addEventListener('DOMContentLoaded', function() {
   ReactDOM.render((
-    <BrowserRouter>
+    <BrowserRouter basename="/#">
       <App />
     </BrowserRouter>
     ),
