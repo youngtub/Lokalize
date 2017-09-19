@@ -1,4 +1,5 @@
 import React from 'react';
+import axios from 'axios';
 
 class Search extends React.Component {
   constructor(props) {
@@ -6,13 +7,19 @@ class Search extends React.Component {
     this.state = {
       address: '',
       date: '',
-      type: ''
+      dinnerType: ''
     }
+    this.handleChange = this.handleChange.bind(this)
   }
 
   handleSubmit(event) {
-    console.log(this.state)
-    event.preventDefault()
+    console.log(this.state);
+    event.preventDefault();
+    axios.post('/search', {
+      address: [40.750542, -73.976568],
+      date: this.state.date,
+      dinnerType: this.state.dinnerType
+    })
   }
 
   handleChange(event){
@@ -25,8 +32,8 @@ class Search extends React.Component {
   render() {
     return (
       <form onSubmit={this.handleSubmit.bind(this)}>
-      Enter Address: <input type = "text" className='address' onChange={this.handleChange.bind(this)}/><br/>
-      Select Dinner Type: <input list="food" className='type' onChange={this.handleChange.bind(this)}/>
+      Enter Address: <input type = "text" className='address' onChange={this.handleChange}/><br/>
+      Select Dinner Type: <input list="food" className='dinnerType' onChange={this.handleChange}/>
       <datalist id="food">
         <option value="Seafood"/>
         <option value="Steak"/>
@@ -34,7 +41,7 @@ class Search extends React.Component {
         <option value="Vegetarian"/>
         <option value="No Preference"/>
       </datalist><br/>
-      Select Date: <input type = "date" className='date' onChange={this.handleChange.bind(this)}/><br/>
+      Select Date: <input type = "date" className='date' onChange={this.handleChange}/><br/>
       <input type="submit"/>
       </form>
     )
