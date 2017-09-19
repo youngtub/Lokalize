@@ -3,12 +3,6 @@ const Sequelize = require('sequelize');
 const Events = require('../models/eventSchema');
 const parser = require('body-parser');
 
-/*
-address
-date
-type
-*/
-
 exports.searchEvents = (req, res) => {
   var address = req.body.address;
   var date = req.body.date;
