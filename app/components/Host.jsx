@@ -1,6 +1,5 @@
 import React from 'react';
 import { Form, FormGroup, FormControl, PageHeader, ButtonToolbar, Button } from 'react-bootstrap';
-import Header from './Header.jsx';
 
 class Host extends React.Component {
   constructor(props) {
@@ -65,7 +64,6 @@ class Host extends React.Component {
   render() {
     return (
       <div>
-        <Header />
         <Form>
           <FormGroup controlId="name" validationState={this.getValidationSate(this.state.name)}>
             <FormControl
