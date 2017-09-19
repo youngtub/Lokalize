@@ -3,13 +3,14 @@ const webpackDevMiddleware = require('webpack-dev-middleware');
 const webpack = require('webpack');
 const webpackConfig = require('./webpack.config.js');
 const bodyParser = require('body-parser');
-//const router = require('./backend/routes.js');  TODO uncomment this when router is made
+//const db = require('./backend/db.js') TODO
+//const router = require('./backend/router/routes.js');TODO
 
 const app = express();
 const compiler = webpack(webpackConfig);
 app.use(bodyParser.json());
 app.use(express.static(__dirname + '/public'));
-//app.use('', router) TODO uncomment this when router is made
+//app.use('', router);TODO
 app.use(webpackDevMiddleware(compiler, {
   hot: true,
   filename: 'bundle.js',

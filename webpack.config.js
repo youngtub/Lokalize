@@ -1,5 +1,5 @@
 const path = require('path');
- 
+
 module.exports = {
   context: path.join(__dirname, 'app'),
   entry: [
@@ -10,7 +10,7 @@ module.exports = {
     filename: 'bundle.js',
   },
   module: {
-    rules: [
+    loaders: [
       {
         test: /\.jsx$/,
         exclude: /node_modules/,
