@@ -1,14 +1,25 @@
-import {User} from './userSchema';
-import {Event} from './eventSchema';
+const User = require('./userSchema');
+const Events = require('./eventSchema');
+const Sequelize = require('sequelize');
+const sequelize = require('../db.js');
 
 const Participation = sequelize.define('participation', {
-  userID: Sequelize.INTEGER, // do we need to explicitly declare this?
-  eventID: Sequelize.INTEGER
+  participation_id: {
+    type: Sequelize.INTEGER,
+    primaryKey: true,
+    autoIncrement: true
+  }
 });
 
-// many to many relationship
+Participation.hasMany(Events); //import events foreign key (events_uuid)
+Participation.hasMany(User); //import users foreign key (users_uuid)
 
-Participation.hasMany(Event);
-Participation.hasMany(User);
+// create the table in db
 
-export default Participation;
+Participation.sync({force: false})
+  .then( () => {
+    console.log('Participation table created!');
+  })
+  .catch( (err) => console.error('In PARTICIPATION table', err));
+
+module.exports = Participation;

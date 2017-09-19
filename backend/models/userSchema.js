@@ -1,9 +1,24 @@
-// import {sequelize} from 'sequelize';
+const Sequelize = require('sequelize');
+const sequelize = require('../db.js');
 
 const User = sequelize.define('user', {
-  user_ID: Sequelize.UUID,
+  user_id: {
+    type: Sequelize.INTEGER,
+    primaryKey: true,
+    autoIncrement: true
+  },
   username: Sequelize.STRING,
-  password: Sequelize.STRING
+  password: Sequelize.STRING,
+}, {
+  timestamps: false
 })
 
-export default User;
+// create the table in db
+
+User.sync({ force: false })
+  .then( () => {
+    console.log('Users table created');
+  })
+  .catch( (err) => console.error('In USER table', err))
+
+module.exports = User;

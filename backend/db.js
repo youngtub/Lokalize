@@ -1,4 +1,4 @@
-var Sequelize = require('sequelize');
+const Sequelize = require('sequelize');
 
 sequelize = new Sequelize('lokalize', 'sss4', 'starfish', {
   host: 'lokalize.cuh8jnsx4027.us-east-2.rds.amazonaws.com',
@@ -17,3 +17,5 @@ sequelize = new Sequelize('lokalize', 'sss4', 'starfish', {
   .catch(err => {
     console.error('Unable to connect to the database:', err);
   });
+
+module.exports = sequelize;
