@@ -1,8 +1,7 @@
 const express = require('express');
 const Sequelize = require('sequelize');
-const events = require('../models/eventSchema')
+const events = require('../models/eventSchema');
 const parser = require('body-parser');
-// express, take req, res, manipulate db
 
 exports.handleForm = (req, res) => {
   var data = {};
@@ -15,9 +14,8 @@ exports.handleForm = (req, res) => {
   data["capacity"] = req.body.capacity;
   var exists = events.findAll({data})
   .then( (exists) => {
-    console.log('EXISTS', exists)
     if (exists) {
-      return res.send('Event already exists!')
+      return res.send('Event already exists!');
    }});
 
   var newEvent = events.create({
@@ -29,9 +27,9 @@ exports.handleForm = (req, res) => {
   })
   .then((newEvent) => {
     if(newEvent) {
-      res.send('Event created!')
+      res.send('Event created!');
     } else {
-      console.error('Error: ', err)
+      console.error('Error: ', err);
     }
   })
   };
