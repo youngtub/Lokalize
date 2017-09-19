@@ -15,7 +15,7 @@ class Search extends React.Component {
   handleSubmit(event) {
     event.preventDefault();
     axios.post('/api/search', {
-      address: this.state.address,
+      //address: this.state.address,
       date: this.state.date,
       dinnerType: this.state.dinnerType
     })
