@@ -1,14 +1,29 @@
-// import {User} from './userSchema';
+const User = require('./userSchema');
+const Sequelize = require('sequelize');
+const sequelize = require('../db.js');
 
-const Event = sequelize.define('event', {
-  event_ID: Sequelize.UUID,
+const Events = sequelize.define('event', {
+  event_id: {
+    type: Sequelize.INTEGER,
+    primaryKey: true,
+    autoIncrement: true
+  },
   name: Sequelize.STRING,
-  date: Sequeqlize.DATE,
-  location: Sequelize.STRING, // maybe ARRAY?
+  date: Sequelize.DATE,
+  location: Sequelize.ARRAY(Sequelize.INTEGER),
   capacity: Sequelize.INTEGER,
-  creator: Sequelize.STRING //username OR userID?
+}, {
+  timestamps: false
 });
 
-Event.belongsTo(User); //defining one user to many event relationship
+Events.hasOne(User); //defining one user to many event relationship + using foreign key (user_id) here
 
-export default Event;
+// create the table in db
+
+Events.sync({ force: false })
+  .then( () => {
+    console.log('Events table created');
+  })
+  .catch( (err) => console.error('In EVENTS table', err));
+
+module.exports = Events;
