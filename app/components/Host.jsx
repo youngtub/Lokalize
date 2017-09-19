@@ -1,5 +1,6 @@
 import React from 'react';
 import { Form, FormGroup, FormControl, PageHeader, ButtonToolbar, Button } from 'react-bootstrap';
+// import Picker from './DatePicker.jsx';
 
 class Host extends React.Component {
   constructor(props) {
@@ -65,6 +66,7 @@ class Host extends React.Component {
     return (
       <div>
         <Form>
+          
           <FormGroup controlId="name" validationState={this.getValidationSate(this.state.name)}>
             <FormControl
               type="text"
@@ -85,7 +87,7 @@ class Host extends React.Component {
           </FormGroup>
           <FormGroup controlId="date" validationState={this.getValidationSate(this.state.date)}>
             <FormControl
-              type="text"
+              type="date"
               value={this.state.date}
               placeholder="Date of Event"
               onChange={this.dateChange}
