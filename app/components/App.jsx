@@ -1,9 +1,9 @@
 import React from 'react';
-import Header from './Header.jsx';
-import Search from './Search.jsx';
-import Host from './Host.jsx';
 import { Switch, Route } from 'react-router-dom';
-import Weather from './Weather.jsx';
+import Home from './Home.jsx';
+import Join from './Join.jsx';
+import Header from './subComponents/Header.jsx';
+import Host from './subComponents/Host.jsx';
 
 class App extends React.Component {
   constructor(props) {
@@ -14,9 +14,9 @@ class App extends React.Component {
     return (
       <div>
         <Header />
-        <Weather />
-        <Search />
         <Switch>
+          <Route exact path='/home' component={Home}/>
+          <Route exact path='/join' component={Join}/>
           <Route exact path='/host' component={Host}/>
         </Switch>
       </div>
