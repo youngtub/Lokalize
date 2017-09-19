@@ -13,13 +13,13 @@ class Search extends React.Component {
   }
 
   handleSubmit(event) {
-    console.log(this.state);
     event.preventDefault();
-    axios.post('/search', {
-      address: [40.750542, -73.976568],
+    axios.post('/api/search', {
+      address: this.state.address,
       date: this.state.date,
       dinnerType: this.state.dinnerType
     })
+    .then(data => console.log(data))//TODO add logic to handle the returned post request data
   }
 
   handleChange(event){
