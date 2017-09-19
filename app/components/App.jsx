@@ -1,9 +1,14 @@
 import React from 'react';
+import Header from './Header.jsx';
 
 class App extends React.Component {
-    render() {
-      return <div>Lokalize!!</div>
-    }
+  constructor(props) {
+    super(props);
+    
+  }
+  render() {
+    return <Header />
+  }
 };
 
 export default App;
