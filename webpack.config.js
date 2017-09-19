@@ -8,6 +8,7 @@ module.exports = {
   output: {
     path: path.join(__dirname, 'public'),
     filename: 'bundle.js',
+    publicPath: '/home/'
   },
   module: {
     loaders: [
@@ -15,7 +16,7 @@ module.exports = {
         test: /\.jsx$/,
         exclude: /node_modules/,
         use: [
-          'babel-loader',
+          'babel-loader'
         ],
       },
       { 

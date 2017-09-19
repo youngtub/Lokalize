@@ -1,5 +1,5 @@
 import React from 'react';
-import { Switch, Route } from 'react-router-dom';
+import { Switch, Route, BrowserRouter, DefaultRoute } from 'react-router-dom';
 import Home from './Home.jsx';
 import Join from './Join.jsx';
 import Header from './subComponents/Header.jsx';
@@ -18,10 +18,13 @@ class App extends React.Component {
           <Route exact path='/home' component={Home}/>
           <Route exact path='/join' component={Join}/>
           <Route exact path='/host' component={Host}/>
+          <Route path='*' component={Home}/>
         </Switch>
       </div>
     )
   }
 };
+
+//backend route - with a /* redirect '/'
 
 export default App;
