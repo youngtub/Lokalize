@@ -9,17 +9,6 @@ sequelize = new Sequelize('lokalize', 'sss4', 'starfish', {
     idle: 10000
   }
 })
-// const sequelize = new Sequelize('postgres://sss4:starfish@lokalize.cuh8jnsx4027.us-east-2.rds.amazonaws.com:5432/lokalize')
-//  //TODO look into why this wont connect with our AWS instance
-
-
- sequelize.query('select * from test').then((data) => {
-
-  console.log('Connection has been established successfully.' , data);
- })
- .catch(err => {
-   console.error('Unable to connect to the database:', err);
- });
 
   sequelize.authenticate()
   .then(() => {
