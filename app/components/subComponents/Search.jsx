@@ -7,7 +7,10 @@ class Search extends React.Component {
     this.state = {
       address: '',
       date: '',
-      dinnerType: ''
+      dinnerType: '',
+      emailValid: false,
+      passwordValid: false,
+      formValid: false
     }
     this.handleChange = this.handleChange.bind(this)
   }

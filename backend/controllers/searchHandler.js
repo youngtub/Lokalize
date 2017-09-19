@@ -7,7 +7,6 @@ exports.searchEvents = (req, res) => {
   var address = req.body.address;
   var date = req.body.date;
   var type = req.body.dinnerType;
-
   Events.findAll({
     where: {
       date: date,

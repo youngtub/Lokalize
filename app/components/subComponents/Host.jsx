@@ -1,5 +1,6 @@
 import React from 'react';
 import { Form, FormGroup, FormControl, PageHeader, ButtonToolbar, Button } from 'react-bootstrap';
+import _ from 'underscore';
 // import Picker from './DatePicker.jsx';
 
 class Host extends React.Component {
@@ -21,6 +22,7 @@ class Host extends React.Component {
 
   };
 
+
   getValidationSate(key) {
     // if (this.state[key].length) return 'success';
     // else if (this.state[key].length > 25) return 'warning';
@@ -40,6 +42,7 @@ class Host extends React.Component {
   };
 
   locationChange(e) {
+    console.log(this.state)
     this.setState({ location: e.target.value });
   };
 
@@ -66,7 +69,7 @@ class Host extends React.Component {
     return (
       <div>
         <Form>
-          
+
           <FormGroup controlId="name" validationState={this.getValidationSate(this.state.name)}>
             <FormControl
               type="text"

@@ -12,7 +12,7 @@ router.post('/login', loginHandler.handleLogin);
 
 // router.get('/logout'); //need to destroy session
 
-router.post('/form', formHandler.handleForm);
+//router.post('/form', formHandler);
 
 router.post('/search', searchHandler.searchEvents);
 
