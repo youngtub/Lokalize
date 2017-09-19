@@ -6,12 +6,11 @@ const parser = require('body-parser');
 exports.searchEvents = (req, res) => {
   var address = req.body.address;
   var date = req.body.date;
-  var type = req.body.type;
+  var type = req.body.dinnerType;
 
   Events.findAll({
     where: {
-      date: date,
-      location: address,
+    //  date: date,
       dinnerType: type
     }
   })
