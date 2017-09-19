@@ -17,3 +17,4 @@ const searchHandler = require('../controllers/searchHandler');
 router.post('/search', searchHandler.searchEvents);
 
 module.exports = router;
+

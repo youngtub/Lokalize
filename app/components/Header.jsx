@@ -1,5 +1,6 @@
 import React from 'react';
-import { Navbar, Nav, NavItem, PageHeader } from 'react-bootstrap';
+import { Navbar, Nav, NavItem, PageHeader, Panel } from 'react-bootstrap';
+import { BrowserRouter, Route, Link } from 'react-router-dom'
 
 class Header extends React.Component {
   constructor(props) {
@@ -19,27 +20,29 @@ class Header extends React.Component {
 
   render() {
     return (
-      <div className="nav-bar">
-        <Navbar inverse collapseOnSelect>
+      <Panel className="nav-bar">
+        <Navbar inverse collapseOnSelect fixedTop fluid>
           <Navbar.Header>
             <Navbar.Brand>
-              <a href="/home">Localize</a>
+              <Link to="/home">Lokalize</Link>
             </Navbar.Brand>
             <Navbar.Toggle />
           </Navbar.Header>
           <Navbar.Collapse>
             <Nav>
-              <NavItem eventKey={1} href="/home">Home</NavItem>
-              <NavItem eventKey={2} href="/host">Host Event</NavItem>
+              <NavItem eventKey={1} href="#"><Link to="/home">Home</Link></NavItem>
+              <NavItem eventKey={2} href="#"><Link to="/host">Host Event</Link></NavItem>
               
             </Nav>
             <Nav pullRight>
-              <NavItem eventKey={1} href="/logout">Log Out</NavItem>
+              <NavItem eventKey={1} href="#"><Link to="/logout">Log Out</Link></NavItem>
             </Nav>
           </Navbar.Collapse>
         </Navbar>
-        <PageHeader> LOCALIZE <small>Random Meetup Generator</small></PageHeader>
-      </div>
+        <div className="Header">
+          <PageHeader> LOKALIZE <small>Random Meetup Generator</small></PageHeader>
+        </div>
+      </Panel>
     )
   }
 };
