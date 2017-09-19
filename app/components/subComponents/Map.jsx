@@ -55,7 +55,7 @@ const MapWithADirectionsRenderer = compose(
 //       directions: null
 //     }
 //   };
- 
+
 //   componentDidMount() {
 //     const Directions = new google.maps.DirectionsService();
 
