@@ -10,7 +10,7 @@ exports.searchEvents = (req, res) => {
 
   Events.findAll({
     where: {
-    //  date: date,
+      date: date,
       dinnerType: type
     }
   })
