@@ -2,12 +2,14 @@ const express = require('express');
 const webpackDevMiddleware = require('webpack-dev-middleware');
 const webpack = require('webpack');
 const webpackConfig = require('./webpack.config.js');
+const bodyParser = require('body-parser');
+//const router = require('./backend/routes.js');  TODO uncomment this when router is made
+
 const app = express();
- 
 const compiler = webpack(webpackConfig);
- 
+app.use(bodyParser.json());
 app.use(express.static(__dirname + '/public'));
- 
+//app.use('', router) TODO uncomment this when router is made
 app.use(webpackDevMiddleware(compiler, {
   hot: true,
   filename: 'bundle.js',
@@ -17,9 +19,13 @@ app.use(webpackDevMiddleware(compiler, {
   },
   historyApiFallback: true,
 }));
- 
+
 const server = app.listen(3000, function() {
   const host = server.address().address;
   const port = server.address().port;
   console.log('Example app listening at http://%s:%s', host, port);
 });
+
+
+
+//
