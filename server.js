@@ -3,7 +3,7 @@ const webpackDevMiddleware = require('webpack-dev-middleware');
 const webpack = require('webpack');
 const webpackConfig = require('./webpack.config.js');
 const bodyParser = require('body-parser');
-//const db = require('./backend/db.js') TODO
+const db = require('./backend/db.js');
 //const router = require('./backend/router/routes.js');TODO
 
 const app = express();
