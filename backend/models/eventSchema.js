@@ -3,15 +3,16 @@ const Sequelize = require('sequelize');
 const sequelize = require('../db.js');
 
 const Events = sequelize.define('event', {
-  event_id: {
+  id: {
     type: Sequelize.INTEGER,
     primaryKey: true,
     autoIncrement: true
   },
   name: Sequelize.STRING,
   date: Sequelize.DATE,
-  location: Sequelize.ARRAY(Sequelize.INTEGER),
+  location: Sequelize.ARRAY(Sequelize.FLOAT),
   capacity: Sequelize.INTEGER,
+  dinnerType: Sequelize.STRING
 }, {
   timestamps: false
 });

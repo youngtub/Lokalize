@@ -2,7 +2,7 @@ const Sequelize = require('sequelize');
 const sequelize = require('../db.js');
 
 const User = sequelize.define('user', {
-  user_id: {
+  id: {
     type: Sequelize.INTEGER,
     primaryKey: true,
     autoIncrement: true
@@ -16,7 +16,7 @@ const User = sequelize.define('user', {
 // create the table in db
 
 User.sync({ force: false })
-  .then( () => {
+  .then(() => {
     console.log('Users table created');
   })
   .catch( (err) => console.error('In USER table', err))
