@@ -1,5 +1,5 @@
 import React from 'react';
-import { Collapse, Navbar, NavbarToggler, NavbarBrand, Nav, Nav, NavItem, NavLink }
+import { Navbar, Nav, NavItem, PageHeader } from 'react-bootstrap';
 
 class Header extends React.Component {
   constructor(props) {
@@ -20,20 +20,25 @@ class Header extends React.Component {
   render() {
     return (
       <div className="nav-bar">
-        <Navbar toggleable>
-          <NavbarToggler onClick={this.navClick} />
-          <NavbarBrand href="/home">Localize</NavbarBrand>
-          <Collapse isActive={this.state.isActive}>
-            <Nav className="m1-auto">
-              <NavItem>
-                <NavLink href="/home">Home</NavLink>
-              </NavItem>
-              <NavItem>
-                <NavLink href="/host">Host Event</NavLink>
-              </NavItem>
+        <Navbar inverse collapseOnSelect>
+          <Navbar.Header>
+            <Navbar.Brand>
+              <a href="/home">Localize</a>
+            </Navbar.Brand>
+            <Navbar.Toggle />
+          </Navbar.Header>
+          <Navbar.Collapse>
+            <Nav>
+              <NavItem eventKey={1} href="/home">Home</NavItem>
+              <NavItem eventKey={2} href="/host">Host Event</NavItem>
+              
             </Nav>
-          </Collapse>
+            <Nav pullRight>
+              <NavItem eventKey={1} href="/logout">Log Out</NavItem>
+            </Nav>
+          </Navbar.Collapse>
         </Navbar>
+        <PageHeader> LOCALIZE <small>Random Meetup Generator</small></PageHeader>
       </div>
     )
   }
