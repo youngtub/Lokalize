@@ -1,5 +1,5 @@
 import React from 'react';
-import { Navbar, Nav, NavItem, PageHeader } from 'react-bootstrap';
+import { Navbar, Nav, NavItem, PageHeader, Panel } from 'react-bootstrap';
 
 class Header extends React.Component {
   constructor(props) {
@@ -19,11 +19,11 @@ class Header extends React.Component {
 
   render() {
     return (
-      <div className="nav-bar">
-        <Navbar inverse collapseOnSelect>
+      <Panel className="nav-bar">
+        <Navbar inverse collapseOnSelect fixedTop fluid>
           <Navbar.Header>
             <Navbar.Brand>
-              <a href="/home">Localize</a>
+              <a href="/home">Lokalize</a>
             </Navbar.Brand>
             <Navbar.Toggle />
           </Navbar.Header>
@@ -38,8 +38,10 @@ class Header extends React.Component {
             </Nav>
           </Navbar.Collapse>
         </Navbar>
-        <PageHeader> LOCALIZE <small>Random Meetup Generator</small></PageHeader>
-      </div>
+        <div className="Header">
+          <PageHeader> LOKALIZE <small>Random Meetup Generator</small></PageHeader>
+        </div>
+      </Panel>
     )
   }
 };

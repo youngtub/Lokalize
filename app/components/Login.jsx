@@ -6,7 +6,24 @@ class Login extends React.Component {
     
   }
   render() {
-    return <div>Lokalize!!</div>
+    return (
+      <div className="modal-container">
+        <Button
+          bsSize="medium"
+        >
+          Create Account
+        </Button>
+        <Button
+          bsSize="medium"
+        >
+          Login
+        </Button>
+        <Modal>
+          <Modal.Header closeButton>
+            
+        </Modal>
+      </div>
+    )
   }
 };
 
