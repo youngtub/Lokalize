@@ -12,8 +12,9 @@ class Home extends React.Component {
 
   render() {
     return (
-      <Weather />,
-      <Search />
+      <Weather />
     )
   }
 }
+
+export default Home;

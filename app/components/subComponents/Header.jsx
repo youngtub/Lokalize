@@ -30,7 +30,7 @@ class Header extends React.Component {
           </Navbar.Header>
           <Navbar.Collapse>
             <Nav>
-              <NavItem eventKey={1} href="#"><Link to="/home">Home</Link></NavItem>
+              <NavItem eventKey={1} href="#"><Link to="/join">Join Event</Link></NavItem>
               <NavItem eventKey={2} href="#"><Link to="/host">Host Event</Link></NavItem>   
             </Nav>
             <Nav pullRight>
