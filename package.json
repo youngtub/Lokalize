@@ -26,6 +26,7 @@
     "babel-preset-react": "^6.24.1",
     "classnames": "^2.2.5",
     "css-loader": "^0.28.7",
+    "body-parser": "^1.18.1",
     "express": "^4.15.4",
     "normalize.css": "^5.0.0",
     "pg": "^7.3.0",
