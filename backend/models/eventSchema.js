@@ -2,7 +2,8 @@ const Users = require('./userSchema');
 const Sequelize = require('sequelize');
 const sequelize = require('../db.js');
 
-const Events = sequelize.define('events', {
+const Events = sequelize.define('event', {
+
   id: {
     type: Sequelize.INTEGER,
     primaryKey: true,
@@ -13,6 +14,7 @@ const Events = sequelize.define('events', {
   date: Sequelize.DATEONLY,
   location: Sequelize.ARRAY(Sequelize.FLOAT),
   capacity: Sequelize.INTEGER,
+  dinnerType: Sequelize.STRING
 }, {
   timestamps: false
 });
