@@ -2,6 +2,7 @@ import React from 'react';
 import Header from './Header.jsx';
 import Search from './Search.jsx';
 import Host from './Host.jsx';
+import { Switch, Route } from 'react-router-dom';
 
 class App extends React.Component {
   constructor(props) {
@@ -13,9 +14,9 @@ class App extends React.Component {
       <div>
         <Header />
         <Search />
-        <div className="jumbotron">
-          <Host />
-        </div>
+        <Switch>
+          <Route exact path='/host' component={Host}/>
+        </Switch>
       </div>
     )
   }
