@@ -15,6 +15,7 @@ class App extends React.Component {
       username: ''
     }
     this.requireAuth = this.requireAuth.bind(this)
+    this.onLogout = this.onLogout.bind(this)
   }
 
   onLogin (username, password){
@@ -32,6 +33,13 @@ class App extends React.Component {
     })
   }
 
+  onLogout() {
+    this.setState({
+      isLoggedIn: false,
+      username: ''
+    })
+  }
+
   requireAuth(){
     return !this.state.isLoggedIn
   }
@@ -39,7 +47,7 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        <Header />
+        <Header onLogout={this.onLogout}/>
         <Switch>
           <Route path='/login' render={() => (
             this.requireAuth() ? (

@@ -34,7 +34,7 @@ class Header extends React.Component {
               <NavItem eventKey={2} href="#"><Link to="/host">Host Event</Link></NavItem>
             </Nav>
             <Nav pullRight>
-              <NavItem eventKey={1} href="#"><Link to="/logout">Log Out</Link></NavItem>
+              <NavItem eventKey={1} href="#" onClick={this.props.onLogout}>Log Out</NavItem>
             </Nav>
           </Navbar.Collapse>
         </Navbar>
