@@ -18,5 +18,4 @@ router.post('/search', searchHandler.searchEvents);
 
 router.get('/home', handleUserEvent);
 
-
 module.exports = router;

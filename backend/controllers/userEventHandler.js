@@ -8,16 +8,14 @@ const parser = require('body-parser');
 
 
 const handleUserEvent = (req, res) => {
-  let username = 'User1';
-
+  let username = req.query.username;
+  console.log('username passed', req.query)
   sequelize.query(`
     select
-      username,
       name as eventName,
       dinner_type,
       date as eventDate,
-      location as eventLocation,
-      capacity
+      location as eventLocation
     from users u
     join participations on participations.user_id = u.id
     join events on events.id = participations.event_id
