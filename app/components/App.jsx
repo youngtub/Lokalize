@@ -6,7 +6,8 @@ import Create from './Create.jsx';
 import Header from './subComponents/Header.jsx';
 // import Host from './subComponents/Host.jsx';
 import Login from './subComponents/Login.jsx';
-import axios from 'axios'
+import axios from 'axios';
+import Signup from './subComponents/Signup.jsx';
 
 class App extends React.Component {
   constructor(props) {
@@ -18,6 +19,29 @@ class App extends React.Component {
     }
     this.requireAuth = this.requireAuth.bind(this)
     this.onLogout = this.onLogout.bind(this)
+  }
+
+  onSignup(username, password, cityName) {
+    axios.post('/api/signup', {
+      username: username,
+      password: password,
+      cityName: cityName
+    })
+    .then((res) => {
+      if (res.data === true) {
+        // console.log('res.data = true', res.data)
+        this.setState({
+          isLoggedIn: true,
+          username: username
+        })
+      } else {
+        // console.log('res.data = false', res.data)
+        this.setState({
+          isLoggedIn: false,
+          username: ''
+        })
+      }
+    })
   }
 
   onLogin (username, password){
@@ -52,6 +76,14 @@ class App extends React.Component {
       <div>
         <Header onLogout={this.onLogout}/>
         <Switch>
+          <Route path='/signup' render={() => (
+            this.requireAuth() ? (
+            <Signup onSignup={this.onSignup.bind(this)}/>
+          ) : (
+            <Redirect to="/home" />
+          )
+          )}/>
+
           <Route path='/login' render={() => (
             this.requireAuth() ? (
             <Login onLogin={this.onLogin.bind(this)}/>
@@ -59,6 +91,7 @@ class App extends React.Component {
             <Redirect to="/home"/>
           )
           )}/>
+
           <Route exact path='/home' render={() => (
             this.requireAuth() ? (
               <Redirect to="/login"/>
