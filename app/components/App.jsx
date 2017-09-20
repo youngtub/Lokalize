@@ -13,7 +13,8 @@ class App extends React.Component {
     super(props);
     this.state = {
       isLoggedIn: false,
-      username: ''
+      username: '',
+      uid:''
     }
     this.requireAuth = this.requireAuth.bind(this)
     this.onLogout = this.onLogout.bind(this)
@@ -28,7 +29,8 @@ class App extends React.Component {
       if (res.data) {
         this.setState({
           isLoggedIn: true,
-          username: username
+          username: username,
+          uid: res.data
         })
       }
     })
@@ -69,7 +71,7 @@ class App extends React.Component {
             this.requireAuth() ? (
               <Redirect to="/login"/>
             ) : (
-              <Join />
+              <Join user_id={this.state.uid}/>
             )
           )}/>
 

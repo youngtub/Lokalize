@@ -10,7 +10,7 @@ class Join extends React.Component {
   render() {
     return (
       <Header />,
-      <Search />
+      <Search user_id={this.props.user_id}/>
     )
   }
 }

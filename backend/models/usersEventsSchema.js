@@ -8,11 +8,13 @@ const Participation = sequelize.define('participations', {
     type: Sequelize.INTEGER,
     primaryKey: true,
     autoIncrement: true
-  }
+  },
+  event_id: Sequelize.INTEGER,
+  user_id: Sequelize.INTEGER
+}, {
+  timestamps: false
 });
 
-Participation.belongsTo(Events); //import events foreign key (events_uuid)
-Participation.belongsTo(Users); //import users foreign key (users_uuid)
 
 // create the table in db
 
