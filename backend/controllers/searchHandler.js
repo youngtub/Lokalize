@@ -18,7 +18,6 @@ exports.searchEvents = (req, res) => {
     let longitude = mapRes[0].longitude;
     let date = req.body.date;
     let type = req.body.dinnerType;
-    console.log(type, date)
     Events.findAll({
       where: {
         date: date,
