@@ -12,7 +12,8 @@ const Events = sequelize.define('event', {
   name: Sequelize.STRING,
   dinner_type: Sequelize.STRING,
   date: Sequelize.DATEONLY,
-  location: Sequelize.ARRAY(Sequelize.FLOAT),
+  location: Sequelize.STRING,
+  address: Sequelize.ARRAY(Sequelize.FLOAT),
   capacity: Sequelize.INTEGER
 }, {
   timestamps: false

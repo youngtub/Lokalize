@@ -11,25 +11,36 @@ exports.handleForm = (req, res) => {
   data["dinnerType"] = req.body.dinnerType;
   data["date"] = req.body.date;
   data["location"] = req.body.location;
+  data["address"] = req.body.address;
   data["capacity"] = req.body.capacity;
-  var exists = events.findAll({data})
-  .then( (exists) => {
-    if (exists) {
-      return res.send('Event already exists!');
-   }});
-
-  var newEvent = events.create({
-    name: data.name,
-    dinner_type: data.dinnerType,
-    date: data.date,
-    location: data.location,
-    capacity: data.capacity
-  })
-  .then((newEvent) => {
-    if(newEvent) {
-      res.send('Event created!');
-    } else {
-      console.error('Error: ', err);
+  events.findAll({where:
+    {
+      name: data.name,
+      location: data.location,
+      date: data.date
     }
   })
-  };
+  .then((exists) => {
+    if (exists.length !== 0) {
+      res.send('Event already exists!');
+      return
+    }
+    events.create({
+      name: data.name,
+      dinner_type: data.dinnerType,
+      date: data.date,
+      location: data.location,
+      address: data.address,
+      capacity: data.capacity
+    })
+    .then((data) => {
+      res.send('Event Created')
+    })
+    .catch(err => {
+      console.log(err)
+    });
+  })
+  .catch(err => {
+    console.log(err)
+  });
+};
