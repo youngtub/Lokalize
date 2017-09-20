@@ -2,7 +2,7 @@ import React from 'react';
 import $ from 'jquery';
 //list
 
-const ListEntryCreate = (props) => {
+const ListEntryCreate = (props) => { 
 
   const handleSelect = (e) => {
     var venue = $(e.target).attr('id');
