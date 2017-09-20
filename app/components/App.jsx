@@ -6,7 +6,8 @@ import Create from './Create.jsx';
 import Header from './subComponents/Header.jsx';
 // import Host from './subComponents/Host.jsx';
 import Login from './subComponents/Login.jsx';
-import axios from 'axios'
+import axios from 'axios';
+import Signup from './subComponents/Signup.jsx';
 
 class App extends React.Component {
   constructor(props) {
@@ -19,6 +20,8 @@ class App extends React.Component {
     this.requireAuth = this.requireAuth.bind(this)
     this.onLogout = this.onLogout.bind(this)
   }
+
+  // onSignup function, passes data down to /signup
 
   onLogin (username, password){
     axios.post('/api/login',{
@@ -52,6 +55,7 @@ class App extends React.Component {
       <div>
         <Header onLogout={this.onLogout}/>
         <Switch>
+          <Route path='/signup' component={Signup}/>
           <Route path='/login' render={() => (
             this.requireAuth() ? (
             <Login onLogin={this.onLogin.bind(this)}/>
