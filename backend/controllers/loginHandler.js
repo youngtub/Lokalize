@@ -10,11 +10,9 @@ exports.handleLogin = (req, res) => {
   var usernameExists = users.findOne({where: {username: user.username, password: user.password}})
   .then((usernameExists) => {
     if (usernameExists) {
-      res.send('you are logged in!')
-      res.redirect('/home');
+      res.send(true)
     } else {
-      res.send('username or password did not match, please try again');
-      res.redirect('/login');
+      res.send(false);
       }
     })
   };

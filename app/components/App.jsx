@@ -5,14 +5,31 @@ import Join from './Join.jsx';
 import Header from './subComponents/Header.jsx';
 import Host from './subComponents/Host.jsx';
 import Login from './subComponents/Login.jsx';
+import axios from 'axios'
 
 class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      isLoggedIn: false
+      isLoggedIn: false,
+      username: ''
     }
     this.requireAuth = this.requireAuth.bind(this)
+  }
+
+  onLogin (username, password){
+    axios.post('/api/login',{
+      username: username,
+      password: password
+    })
+    .then((res) => {
+      if (res) {
+        this.setState({
+          isLoggedIn: true,
+          username: username
+        })
+      }
+    })
   }
 
   requireAuth(){
@@ -24,7 +41,13 @@ class App extends React.Component {
       <div>
         <Header />
         <Switch>
-          <Route exact path='/login' component={Login}  onEnter={this.requireAuth.bind(this)}/>
+          <Route path='/login' render={() => (
+            this.requireAuth() ? (
+            <Login onLogin={this.onLogin.bind(this)}/>
+          ) : (
+            <Redirect to="/home"/>
+          )
+          )}/>
           <Route exact path='/home' render={() => (
             this.requireAuth() ? (
               <Redirect to="/login"/>
