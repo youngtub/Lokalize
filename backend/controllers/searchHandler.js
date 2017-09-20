@@ -21,7 +21,7 @@ exports.searchEvents = (req, res) => {
     Events.findAll({
       where: {
         date: date,
-        dinnerType: type
+        dinner_type: type
       }
     })
     .then( (events) => {

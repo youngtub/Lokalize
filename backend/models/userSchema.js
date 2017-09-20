@@ -9,7 +9,7 @@ const User = sequelize.define('users', {
   },
   username: Sequelize.STRING,
   password: Sequelize.STRING,
-  cityId: Sequelize.INTEGER,
+  city_id: Sequelize.INTEGER,
 }, {
   timestamps: false
 })
