@@ -86,6 +86,4 @@ class App extends React.Component {
   }
 };
 
-//backend route - with a /* redirect '/'
-
 export default App;
