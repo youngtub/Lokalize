@@ -42,7 +42,6 @@ class Host extends React.Component {
   };
 
   locationChange(e) {
-    console.log(this.state)
     this.setState({ location: e.target.value });
   };
 

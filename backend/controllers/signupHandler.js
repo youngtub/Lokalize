@@ -29,7 +29,16 @@ exports.handleSignup = (req, res) => {
           console.error('Error:', err);
         }
       })
+      .catch((err) => {
+    res.status(404).send('eff this one')
+  })
     })
+    .catch((err) => {
+    res.status(404).send('eff this two')
+  })
+  })
+  .catch((err) => {
+    res.status(404).send('this is the error', err)
   })
 };
 
