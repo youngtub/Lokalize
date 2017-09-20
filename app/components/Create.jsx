@@ -10,12 +10,19 @@ class Home extends React.Component {
     super(props);
     this.state = {
       restaurants: [],
+<<<<<<< HEAD
       venue: '',
       address: ''
     }
     this.restaurantsCallback = this.restaurantsCallback.bind(this);
     this.selectRestaurantCallback = this.selectRestaurantCallback.bind(this);
     this.submitEvent = this.submitEvent.bind(this);
+=======
+      venue: ''
+    }
+    this.restaurantsCallback = this.restaurantsCallback.bind(this);
+    this.selectRestaurantCallback = this.selectRestaurantCallback.bind(this);
+>>>>>>> working on selecting venue
   }
 
   restaurantsCallback(restaurantArray) {
@@ -24,6 +31,7 @@ class Home extends React.Component {
     })
   }
 
+<<<<<<< HEAD
   selectRestaurantCallback(venue, address) {
     this.setState({
       venue: venue,
@@ -48,6 +56,12 @@ class Home extends React.Component {
         // console.log('Event sent to back end');
         console.log(response);
       })
+=======
+  selectRestaurantCallback(venue) {
+    this.setState({
+      venue: venue
+    })
+>>>>>>> working on selecting venue
   }
 
   render() {
@@ -55,7 +69,11 @@ class Home extends React.Component {
       <div>
         <Jumbotron>
         </Jumbotron>,
+<<<<<<< HEAD
         <Host getAllRestaurantsFromQuery={this.restaurantsCallback} submitEventCallback={this.submitEvent}/>
+=======
+        <Host callbackFromCreate={this.restaurantsCallback}/>
+>>>>>>> working on selecting venue
         <ListEntryCreate entries = {this.state.restaurants} selectCallback={this.selectRestaurantCallback}/>
       </div>
     )

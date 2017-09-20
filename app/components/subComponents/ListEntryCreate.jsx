@@ -1,4 +1,5 @@
 import React from 'react';
+<<<<<<< HEAD
 import $ from 'jquery';
 //list
 
@@ -16,11 +17,23 @@ const ListEntryCreate = (props) => {
     <div id='options'>
       {props.entries.map( (entry, ind) => (
         <div style={itemStyle} onClick={handleSelect} key={ind} id={entry.restaurant.name} className={entry.restaurant.location.address} >
+=======
+//list
+const ListEntryCreate = (props) => {
+
+handleSelect
+
+  return (
+    <div>
+      {props.entries.map( (entry) => (
+        <span>
+>>>>>>> working on selecting venue
             Name: {entry.restaurant.name}<br></br>
             Cuisine: {entry.restaurant.cuisines}<br></br>
             Locality: {entry.restaurant.location.locality}<br></br>
             Rating: {entry.restaurant.user_rating.aggregate_rating}<br></br>
             <img src={entry.restaurant.thumb} width={100} height={100}></img><br></br>
+<<<<<<< HEAD
       </div>
         ))}
   </div> )
@@ -34,5 +47,12 @@ const itemStyle = {
   textAlign: 'center'
 }
 
+=======
+            <hr></hr>
+      </span>
+        ))}
+  </div> )
+};
+>>>>>>> working on selecting venue
 
 export default ListEntryCreate;
