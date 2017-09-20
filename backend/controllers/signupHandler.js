@@ -47,6 +47,5 @@ var locationAPICall = (locationString) => {
     console.log('RESULTS', results)
   	return cityId = results.data.location_suggestions[0].entity_id;
   })
-  .catch( (err) => console.error(err));
-
+  .catch( (err) => console.error(err)); 
 }
