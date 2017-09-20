@@ -4,6 +4,7 @@ const events = require('../models/eventSchema');
 const parser = require('body-parser');
 
 exports.handleForm = (req, res) => {
+  console.log('DATA in form handler', data);
   var data = {};
   // data.username = req.body.username;
   // const password = req.body.password;

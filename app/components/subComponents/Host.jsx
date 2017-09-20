@@ -12,7 +12,7 @@ class Host extends React.Component {
       name: '',
       type: '',
       date: '',
-      location: ''
+      locationForQuery: ''
     },
 
     this.nameChange = this.nameChange.bind(this);
@@ -43,8 +43,8 @@ class Host extends React.Component {
   };
 
   locationChange(e) {
-    this.setState({ location: e.target.value });
-    var reqUrl = "https://developers.zomato.com/api/v2.1/search?entity_id=280&entity_type=city&q=" + this.state.location;
+    this.setState({ locationForQuery: e.target.value });
+    var reqUrl = "https://developers.zomato.com/api/v2.1/search?entity_id=280&entity_type=city&q=" + this.state.locationForQuery;
     var config = {
       "headers" : {
     	   "Content-Type": "application/json",
@@ -53,19 +53,12 @@ class Host extends React.Component {
       };
     axios.get(reqUrl, config)
     .then( (results) => {
-      console.log(results); //want to pass this to listEntry
-      this.props.callbackFromCreate(results.data.restaurants);
+      this.props.getAllRestaurantsFromQuery(results.data.restaurants);
     })
   };
 
   clickCreate() {
-    //TODO: helper function add event -- POST
-    this.setState({
-      name: '',
-      type: '',
-      date: '',
-      location: ''
-    })
+    this.props.submitEventCallback(this.state.name, this.state.type, this.state.date);
   };
 
   clickCancel() {
