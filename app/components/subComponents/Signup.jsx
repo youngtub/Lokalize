@@ -30,23 +30,23 @@ class Signup extends React.Component {
     })
   }
 
-  handleNewUserSignup (event) {
-    Axios.post('/api/signup', {
-      username: this.state.username,
-      password: this.state.password,
-      cityName: this.state.cityName
-    })
-    .then(function(res) {
-      if(res.data === true) {
-        this.setState({
-          username: username
-        })
-      } else {
-        username:''
-      }
-      // link this to /signup in backend
-    })
-  }
+  // handleNewUserSignup (event) {
+  //   Axios.post('/api/signup', {
+  //     username: this.state.username,
+  //     password: this.state.password,
+  //     cityName: this.state.cityName
+  //   })
+  //   .then(function(res) {
+  //     if(res.data === true) {
+  //       this.setState({
+  //         username: username
+  //       })
+  //     } else {
+  //       username:''
+  //     }
+  //     // link this to /signup in backend
+  //   })
+  // }
 
   render() {
     return(
