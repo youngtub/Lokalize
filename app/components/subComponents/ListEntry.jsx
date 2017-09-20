@@ -5,7 +5,7 @@ const ListEntry = (props) => {
     <ul>
       {props.entries.map((entry) => (
           <li>
-            {entry}
+            {entry.restaurant.name}
           </li>
         ))}
     </ul>
