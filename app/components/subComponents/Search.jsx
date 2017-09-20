@@ -47,6 +47,7 @@ class Search extends React.Component {
     this.setState({ address: e.target.value });
   };
 
+  // onSubmit={this.handleSubmit.bind(this)}
   render() {
     return (
       <Form inline>
@@ -80,7 +81,11 @@ class Search extends React.Component {
           <MenuItem eventKey="Vegetarian" >Vegetarian</MenuItem>
           <MenuItem eventKey="" >No Preference</MenuItem>
         </DropdownButton>
+<<<<<<< HEAD
       </ButtonGroup><br /><br/>
+=======
+      </ButtonGroup><br/><br/>
+>>>>>>> ac05a2c942dbc69e16de76a20de9617e48f6c998
         <Button type="submit" onClick={this.handleSubmit}>
           Find My Event
         </Button>
