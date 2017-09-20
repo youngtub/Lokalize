@@ -19,10 +19,12 @@ const handleUserEvent = (req, res) => {
       location as eventLocation,
       capacity
     from users u
-    join participations on participations.userId = u.id
+    join participations on participations.user_id = u.id
     join events on events.id = participations.event_id
     where username = '${username}'`, { type: sequelize.QueryTypes.SELECT})
-    .then(user => {res.send(user)})
+    .then(user => {
+      res.send(user)
+    })
   }
 
 module.exports = handleUserEvent;
