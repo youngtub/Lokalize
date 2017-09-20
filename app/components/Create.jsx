@@ -33,12 +33,12 @@ class Home extends React.Component {
 
   submitEvent(name, type, date) {
     console.log('ABOUT TO SEND POST REQUEST');
-    console.log('Parameters', name, type, date, this.state.venue, this.state.address);
+    console.log('Parameters', name, type, date, this.state.venue, this.state.address, this.props.userid);
 
       axios.post('/api/form', {
         name: name,
         dinnerType: type,
-        date: date,
+        date: date, 
         location: this.state.venue,
         address: this.state.address,
         capacity: 10,

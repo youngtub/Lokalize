@@ -32,7 +32,7 @@ exports.handleForm = (req, res) => {
   .then( (exists) => {
     if (exists.length !== 0) {
       res.send('Event already exists!');
-      return
+      return 
     }
     geocoder.geocode(req.body.address)
     .then(function(mapRes) {

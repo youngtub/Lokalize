@@ -12,8 +12,9 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      isLoggedIn: true,
-      username: ''
+      isLoggedIn: false,
+      username: '',
+      uid: ''
     }
     this.requireAuth = this.requireAuth.bind(this)
     this.onLogout = this.onLogout.bind(this)
