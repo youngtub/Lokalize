@@ -1,22 +1,29 @@
 import React from 'react';
 import Host from './subComponents/Host.jsx';
-import ListEntry from './subComponents/ListEntry.jsx';
+import ListEntryCreate from './subComponents/ListEntryCreate.jsx';
 import { Container, Jumbotron } from 'react-bootstrap';
 
 class Home extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      restaurants: []
+      restaurants: [],
+      venue: ''
     }
-    this.restaurantsCallback = this.restaurantsCallback.bind(this)
+    this.restaurantsCallback = this.restaurantsCallback.bind(this);
+    this.selectRestaurantCallback = this.selectRestaurantCallback.bind(this);
   }
 
   restaurantsCallback(restaurantArray) {
-    console.log('IN CREATE ARRAY', restaurantArray);
     this.setState({
       restaurants: restaurantArray
-    }, () => console.log('STATE IN CREATE', this.state.restaurants))
+    })
+  }
+
+  selectRestaurantCallback(venue) {
+    this.setState({
+      venue: venue
+    })
   }
 
   render() {
@@ -25,7 +32,7 @@ class Home extends React.Component {
         <Jumbotron>
         </Jumbotron>,
         <Host callbackFromCreate={this.restaurantsCallback}/>
-        <ListEntry entries = {this.state.restaurants} />
+        <ListEntryCreate entries = {this.state.restaurants} selectCallback={this.selectRestaurantCallback}/>
       </div>
     )
   }
