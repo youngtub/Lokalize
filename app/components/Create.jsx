@@ -8,6 +8,7 @@ import axios from 'axios';
 =======
 >>>>>>> merge conflicts fixed
 
+
 class Home extends React.Component {
   constructor(props) {
     super(props);
@@ -83,6 +84,7 @@ class Home extends React.Component {
   submitEvent(name, type, date) {
     console.log('ABOUT TO SEND POST REQUEST');
     console.log('Parameters', name, type, date, this.state.venue, this.state.address);
+<<<<<<< HEAD
     axios.post('/api/form', {
       name: name,
       dinnerType: type,
@@ -96,6 +98,22 @@ class Home extends React.Component {
       console.log(response);
     })
 >>>>>>> working on selecting venue
+=======
+
+      axios.post('/api/form', {
+        name: name,
+        dinnerType: type,
+        date: date,
+        location: this.state.venue,
+        address: this.state.address,
+        capacity: 10,
+        userid: this.props.userid
+      })
+      .then( (response) => {
+        // console.log('Event sent to back end');
+        console.log(response);
+      })
+>>>>>>> working
   }
 
   render() {
