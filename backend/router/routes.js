@@ -11,7 +11,6 @@ router.post('/signup', signupHandler.handleSignup);
 router.post('/login', loginHandler.handleLogin);
 
 // router.get('/logout'); //need to destroy session
-
 router.post('/form', formHandler.handleForm);
 
 router.post('/search', searchHandler.searchEvents);

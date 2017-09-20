@@ -1,27 +1,24 @@
 import React from 'react';
+import {Button} from 'react-bootstrap';
 
 class Login extends React.Component {
   constructor(props) {
     super(props);
-    
+
   }
   render() {
     return (
       <div className="modal-container">
         <Button
-          bsSize="medium"
+          bsSize="lg"
         >
           Create Account
         </Button>
         <Button
-          bsSize="medium"
+          bsSize="lg"
         >
           Login
         </Button>
-        <Modal>
-          <Modal.Header closeButton>
-            
-        </Modal>
       </div>
     )
   }

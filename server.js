@@ -30,3 +30,8 @@ const server = app.listen(3000, function() {
   const port = server.address().port;
   console.log('Example app listening at http://%s:%s', host, port);
 });
+
+
+// iplocation('56.70.97.8', function (error, res) {
+//   console.log(res)
+// })
