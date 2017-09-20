@@ -2,8 +2,9 @@ import React from 'react';
 import { Switch, Route, BrowserRouter, DefaultRoute, Redirect } from 'react-router-dom';
 import Home from './Home.jsx';
 import Join from './Join.jsx';
+import Create from './Create.jsx';
 import Header from './subComponents/Header.jsx';
-import Host from './subComponents/Host.jsx';
+// import Host from './subComponents/Host.jsx';
 import Login from './subComponents/Login.jsx';
 import axios from 'axios'
 
@@ -76,7 +77,7 @@ class App extends React.Component {
             this.requireAuth() ? (
               <Redirect to="/login"/>
             ) : (
-              <Host />
+              <Create />
             )
           )}/>
 
