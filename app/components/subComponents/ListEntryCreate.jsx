@@ -29,7 +29,8 @@ const ListEntryCreate = (props) => {
   const handleSelect = (e) => {
     var venue = $(e.target).attr('id');
     var address = $(e.target).attr('class');
-    $("#options").toggle();
+    console.log('HOST SELECTED', venue + ' ' + address)
+    $(e.target).css('background-color', 'grey');
     props.selectCallback(venue, address);
   }
 
