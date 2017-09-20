@@ -28,14 +28,16 @@ class App extends React.Component {
     })
     .then((res) => {
       if (res.data === true) {
-        this.setState({
-          isLoggedIn: false,
-          username: ''
-        })
-      } else {
+        // console.log('res.data = true', res.data)
         this.setState({
           isLoggedIn: true,
           username: username
+        })
+      } else {
+        // console.log('res.data = false', res.data)
+        this.setState({
+          isLoggedIn: false,
+          username: ''
         })
       }
     })
