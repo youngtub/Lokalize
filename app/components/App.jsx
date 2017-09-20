@@ -21,6 +21,28 @@ class App extends React.Component {
   }
 
   // onSignup function, passes data down to /signup
+  onSignup(username, password, cityName) {
+    axios.post('/api/signup', {
+      username: username,
+      password: password,
+      cityName: cityName
+    })
+    .then((res) => {
+      console.log('data here>>>', res.data)
+      if (res.data) { //confirm this
+
+        this.setState({
+          isLoggedIn: false,
+          username: ''
+        })
+      } else {
+        this.setState({
+          isLoggedIn: true,
+          username: username
+        })
+      }
+    })
+  }
 
   onLogin (username, password){
     axios.post('/api/login',{
