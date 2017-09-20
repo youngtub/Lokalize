@@ -20,7 +20,7 @@ exports.handleForm = (req, res) => {
 
   var newEvent = events.create({
     name: data.name,
-    dinnerType: data.dinnerType,
+    dinner_type: data.dinnerType,
     date: data.date,
     location: data.location,
     capacity: data.capacity
