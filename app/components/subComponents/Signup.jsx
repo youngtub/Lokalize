@@ -2,7 +2,7 @@ import React from 'react';
 import {Button} from 'react-bootstrap';
 import Axios from 'axios';
 
-class CreateAccountForm extends React.Component {
+class Signup extends React.Component {
   constructor() { //do I need props here? Why/why not?
     super()
     this.state = {
@@ -32,33 +32,27 @@ class CreateAccountForm extends React.Component {
 
   handleNewUserSignup (event) {
     Axios.post('/api/signup', {
-
-// user inputs username and password combo into form in frontend
-// Axios takes input, addes to db
-// server takes new info, return
-
-    // update database here
-      // axios sends data to server
-      // recieves post request
-      // server processes data
-      // server sends back response
-        // axios promises (.then)
-      // redirect (server-side should already take care of redirecting)
       username: this.state.username,
       password: this.state.password,
       cityName: this.state.cityName
     })
     .then(function(res) {
-      console.log('new user created');
+      console.log(res);
+      // returns true,
+      // functionality that logs user in
+
     })
   }
 
   render() {
     return(
-      <div input type="text" value={this.state.username} onChange={this.handleUsernameChange.bind(this)}>
+      <div>
+        Username: <input type="text" value={this.state.username} onChange={this.handleUsernameChange.bind(this)}/>
+        Password: <input type="text" value={this.state.password} onChange={this.handlePasswordChange.bind(this)}/>
+        City Name: <input type="text" value={this.state.cithName} onChange={this.handleCityNameChange.bind(this)}/>
+        <button type="submit" value="Submit" onClick={this.handleNewUserSignup.bind(this)}>Create Account</button>
       </div>
 
-      </div>
       )
   }
 };
