@@ -10,7 +10,7 @@ exports.handleLogin = (req, res) => {
   var usernameExists = users.findOne({where: {username: user.username, password: user.password}})
   .then((usernameExists) => {
     if (usernameExists) {
-      res.send(true)
+      res.send(JSON.stringify(usernameExists.id))
     } else {
       res.send(false);
       }
