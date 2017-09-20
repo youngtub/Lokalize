@@ -112,7 +112,7 @@ class App extends React.Component {
             this.requireAuth() ? (
               <Redirect to="/login"/>
             ) : (
-              <Create />
+              <Create userid={this.state.uid}/>
             )
           )}/>
 
