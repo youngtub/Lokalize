@@ -12,7 +12,7 @@ class Host extends React.Component {
       name: '',
       type: '',
       date: '',
-      locationForQuery: '' 
+      locationForQuery: ''
     },
 
     this.nameChange = this.nameChange.bind(this);
