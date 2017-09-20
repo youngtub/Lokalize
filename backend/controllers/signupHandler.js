@@ -13,7 +13,6 @@ exports.handleSignup = (req, res) => {
   .then((usernameAlreadyInUse) => {
     if (usernameAlreadyInUse) {
       return res.send(false);
-      res.redirect('/signup');
     }
     locationAPICall(user.cityName)
     .then( (cityId) => {
