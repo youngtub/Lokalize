@@ -18,6 +18,7 @@ class Home extends React.Component {
         <Jumbotron>
           <MapWithADirectionsRenderer />,
         </Jumbotron>,
+        <ListEntry entries={['thing1', 'thing2', 'thing3']} />
       </div>
     )
   }
