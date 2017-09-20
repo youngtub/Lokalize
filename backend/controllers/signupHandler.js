@@ -10,10 +10,10 @@ exports.handleSignup = (req, res) => {
   user['password'] = req.body.password;
   user['cityName'] = req.body.cityName;
   var usernameAlreadyInUse = users.findOne({where: {username: user.username}})
-  .then( (usernameAlreadyInUse) => {
+  .then((usernameAlreadyInUse) => {
     if (usernameAlreadyInUse) {
-      return res.send('username already in use, please pick another username');
-      // res.redirect('/signup');
+      return res.send(false);
+      res.redirect('/signup');
     }
     locationAPICall(user.cityName)
     .then( (cityId) => {
@@ -24,7 +24,7 @@ exports.handleSignup = (req, res) => {
       })
       .then((newUser) => {
         if (newUser) {
-          res.send('new user created!');
+          res.send(true); //true, setState
         } else {
           console.error('Error:', err);
         }

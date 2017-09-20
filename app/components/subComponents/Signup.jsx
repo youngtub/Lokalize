@@ -3,8 +3,8 @@ import {Button} from 'react-bootstrap';
 import Axios from 'axios';
 
 class Signup extends React.Component {
-  constructor() { //do I need props here? Why/why not?
-    super()
+  constructor(props) {
+    super(props)
     this.state = {
       username: '',
       password: '',
@@ -37,10 +37,14 @@ class Signup extends React.Component {
       cityName: this.state.cityName
     })
     .then(function(res) {
-      console.log(res);
-      // returns true,
-      // functionality that logs user in
-
+      if(res.data === true) {
+        this.setState({
+          username: username
+        })
+      } else {
+        username:''
+      }
+      // link this to /signup in backend
     })
   }
 
@@ -49,8 +53,8 @@ class Signup extends React.Component {
       <div>
         Username: <input type="text" value={this.state.username} onChange={this.handleUsernameChange.bind(this)}/>
         Password: <input type="text" value={this.state.password} onChange={this.handlePasswordChange.bind(this)}/>
-        City Name: <input type="text" value={this.state.cithName} onChange={this.handleCityNameChange.bind(this)}/>
-        <button type="submit" value="Submit" onClick={this.handleNewUserSignup.bind(this)}>Create Account</button>
+        City Name: <input type="text" value={this.state.cityName} onChange={this.handleCityNameChange.bind(this)}/>
+        <button type="submit" value="Submit" onClick={() => this.props.onSignup(this.state.username, this.state.password, this.state.cityName)}>Create Account</button>
       </div>
 
       )

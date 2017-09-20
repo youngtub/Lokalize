@@ -20,7 +20,6 @@ class App extends React.Component {
     this.onLogout = this.onLogout.bind(this)
   }
 
-  // onSignup function, passes data down to /signup
   onSignup(username, password, cityName) {
     axios.post('/api/signup', {
       username: username,
@@ -28,9 +27,7 @@ class App extends React.Component {
       cityName: cityName
     })
     .then((res) => {
-      console.log('data here>>>', res.data)
-      if (res.data) { //confirm this
-
+      if (res.data === true) {
         this.setState({
           isLoggedIn: false,
           username: ''
@@ -75,7 +72,14 @@ class App extends React.Component {
       <div>
         <Header onLogout={this.onLogout}/>
         <Switch>
-          <Route path='/signup' component={Signup}/>
+          <Route path='/signup' render={() => (
+            this.requireAuth() ? (
+            <Signup onSignup={this.onSignup.bind(this)}/>
+          ) : (
+            <Redirect to="/home" />
+          )
+          )}/>
+
           <Route path='/login' render={() => (
             this.requireAuth() ? (
             <Login onLogin={this.onLogin.bind(this)}/>
@@ -83,6 +87,7 @@ class App extends React.Component {
             <Redirect to="/home"/>
           )
           )}/>
+
           <Route exact path='/home' render={() => (
             this.requireAuth() ? (
               <Redirect to="/login"/>
