@@ -70,6 +70,20 @@ exports.handleForm = (req, res) => {
           user_id: data.userid
         })
       })
+      .then( () => {
+         return events.findAll({
+          attributes: ['id'],
+          where: {
+            name: data.name
+          }
+        })
+      })
+      .then( (eventId) => {
+        participations.create({
+          event_id: eventId[0].dataValues.id,
+          user_id: data.userid
+        })
+      })
       .then((data) => {
         res.send('Event Created')
       })
