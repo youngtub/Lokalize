@@ -44,15 +44,17 @@ class Host extends React.Component {
 
   locationChange(e) {
     this.setState({ locationForQuery: e.target.value });
-    var reqUrl = "https://developers.zomato.com/api/v2.1/search?entity_id=280&entity_type=city&q=280" + this.state.locationForQuery;
+    var reqUrl = "https://developers.zomato.com/api/v2.1/search?entity_id=280&entity_type=city&q=" + this.state.locationForQuery;
     var config = {
       "headers" : {
     	   "Content-Type": "application/json",
     	    "user-key": "0531c898c316947b94f8b79453e43caf"
         }
       };
+    console.log('state location query', this.state.locationForQuery)
     axios.get(reqUrl, config)
     .then( (results) => {
+      console.log('API call', results);
       this.props.getAllRestaurantsFromQuery(results.data.restaurants);
     })
   };
