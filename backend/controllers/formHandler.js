@@ -51,7 +51,6 @@ exports.handleForm = (req, res) => {
         userId: data.userid
       })
       .then((data) => {
-        console.log('DATA in form handler', data);
         res.send('Event Created')
       })
       .catch(err => {
