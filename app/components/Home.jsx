@@ -5,7 +5,7 @@ import Search from './subComponents/Search.jsx';
 import MapWithADirectionsRenderer from './subComponents/Map.jsx';
 // import Calendar from './subComponents/Calendar.jsx';
 import ListEntry from './subComponents/ListEntry.jsx';
-import { Container, Jumbotron, Table } from 'react-bootstrap';
+import { Container, Jumbotron, Table, FormGroup, FormControl, } from 'react-bootstrap';
 
 class Home extends React.Component {
   constructor(props) {
@@ -38,14 +38,15 @@ class Home extends React.Component {
   
   addressChange (e) {
     let address = e.target.value;
+    this.searchInputElement = inputReference;
     //google converter to lat and long    
   }
+
 
   render() {
     return (
       <div>
         <Weather />,
-     
         <Jumbotron>
           <MapWithADirectionsRenderer address={this.state.startAddress} />,
         </Jumbotron>,
