@@ -14,6 +14,7 @@ const MapWithADirectionsRenderer = compose(
   withScriptjs,
   withGoogleMap,
   lifecycle({
+    
     componentWillMount() {
       const refs = {}
 
@@ -39,7 +40,7 @@ const MapWithADirectionsRenderer = compose(
          
           const places = refs.searchBox.getPlaces();
           const bounds = new google.maps.LatLngBounds();
-
+          console.log(`our props are ${this.props.endAddress}`)
           console.log('this is happening', places[0].geometry.viewport)
           places.forEach(place => {
             if (place.geometry.viewport) {
@@ -64,12 +65,12 @@ const MapWithADirectionsRenderer = compose(
           // refs.map.fitBounds(bounds);const DirectionsService = new google.maps.DirectionsService();
           let startLong = places[0].geometry.viewport.b.b;
           let startLat = places[0].geometry.viewport.f.b;
-         
-          const DirectionsService = new google.maps.DirectionsService();
           
+          const DirectionsService = new google.maps.DirectionsService();
+          console.log(`here is the coords long ${endLong} and lat ${endLat}`)
           DirectionsService.route({
             origin: new google.maps.LatLng(startLat, startLong),
-            destination: new google.maps.LatLng(40.747215, -73.984647),
+            destination: new google.maps.LatLng(this.props.endAddress[0], this.props.endAddress[1]),
             travelMode: google.maps.TravelMode.WALKING,
           }, (result, status) => {
             if (status === google.maps.DirectionsStatus.OK) {
@@ -101,7 +102,8 @@ const MapWithADirectionsRenderer = compose(
       });
     }
   })
-)(props =>
+)(function(props) {
+  return (
   <GoogleMap
     defaultZoom={7}
     defaultCenter={new google.maps.LatLng(51.5033640, -73.9764010)}
@@ -135,7 +137,8 @@ const MapWithADirectionsRenderer = compose(
       <Marker key={index} position={marker.position} />
     )}
   </GoogleMap>
-);
+  )
+});
 //not full magic mode - look up the new syntax
 
 

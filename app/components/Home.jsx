@@ -11,7 +11,7 @@ class Home extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      startAddress: '',
+      endAddress:  [],
       events: [{
         "username": "",
         "eventname": "Slices with Strangers",
@@ -35,20 +35,13 @@ class Home extends React.Component {
         console.error('axios GET error: ', err);
       })
   }
-  
-  addressChange (e) {
-    let address = e.target.value;
-    this.searchInputElement = inputReference;
-    //google converter to lat and long    
-  }
-
-
+//create an on click that sets the end address
   render() {
     return (
       <div>
         <Weather />,
         <Jumbotron>
-          <MapWithADirectionsRenderer address={this.state.startAddress} />,
+          <MapWithADirectionsRenderer endAddress={this.state.events[0].coordinates} />,
         </Jumbotron>,
         <Table responsive>
           <thead>
