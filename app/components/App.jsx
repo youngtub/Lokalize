@@ -80,7 +80,7 @@ class App extends React.Component {
             this.requireAuth() ? (
             <Signup onSignup={this.onSignup.bind(this)}/>
           ) : (
-            <Redirect to="/home" />
+            <Redirect to="/home" username={this.state.username} />
           )
           )}/>
 
@@ -88,7 +88,7 @@ class App extends React.Component {
             this.requireAuth() ? (
             <Login onLogin={this.onLogin.bind(this)}/>
           ) : (
-            <Redirect to="/home"/>
+            <Redirect to="/home" username={this.state.username} />
           )
           )}/>
 
@@ -96,7 +96,7 @@ class App extends React.Component {
             this.requireAuth() ? (
               <Redirect to="/login"/>
             ) : (
-              <Home />
+              <Home username={this.state.username} />
             )
           )}/>
 
