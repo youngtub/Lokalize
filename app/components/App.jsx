@@ -50,7 +50,6 @@ class App extends React.Component {
       password: password
     })
     .then((res) => {
-      console.log('RES IN APP.jsx', res)
       if (res.data) {
         this.setState({
           isLoggedIn: true,
