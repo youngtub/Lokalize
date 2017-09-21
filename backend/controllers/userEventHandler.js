@@ -15,7 +15,8 @@ const handleUserEvent = (req, res) => {
       name as eventName,
       dinner_type,
       date as eventDate,
-      location as eventLocation
+      location as eventLocation,
+      address as coordinates
     from users u
     join participations on participations.user_id = u.id
     join events on events.id = participations.event_id
