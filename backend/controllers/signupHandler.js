@@ -8,22 +8,20 @@ exports.handleSignup = (req, res) => {
   var user = {};
   user['username'] = req.body.username;
   user['password'] = req.body.password;
-  user['cityName'] = req.body.cityName;
   var usernameAlreadyInUse = users.findOne({where: {username: user.username}})
   .then((usernameAlreadyInUse) => {
     if (usernameAlreadyInUse) {
       return res.send(false);
     }
-    locationAPICall(user.cityName)
-    .then( (cityId) => {
+    // locationAPICall(user.cityName)
+    // .then( (cityId) => {
       var newUser = users.create({
         username: user.username,
-        password: user.password,
-        city_id: cityId
+        password: user.password
       })
       .then((newUser) => {
         if (newUser) {
-          res.send(true); //true, setState
+          res.send(true);
         } else {
           console.error('Error:', err);
         }
@@ -35,7 +33,7 @@ exports.handleSignup = (req, res) => {
     .catch((err) => {
     res.status(404).send('eff this two')
   })
-  })
+  // })
   .catch((err) => {
     res.status(404).send('this is the error', err)
   })
