@@ -14,7 +14,8 @@ const Events = sequelize.define('event', {
   date: Sequelize.DATEONLY,
   location: Sequelize.STRING,
   address: Sequelize.ARRAY(Sequelize.FLOAT),
-  capacity: Sequelize.INTEGER
+  capacity: Sequelize.INTEGER,
+  locality: Sequelize.STRING
 }, {
   timestamps: false
 });

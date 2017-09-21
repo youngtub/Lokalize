@@ -20,7 +20,7 @@ class Search extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      address: 'Enter Locality',
+      address: 'Select Locality',
       date: '',
       emailValid: false,
       passwordValid: false,
@@ -57,8 +57,8 @@ class Search extends React.Component {
     this.setState({ date: e.target.value });
   };
 
-  addressChange(e) {
-    this.setState({ address: e.target.value });
+  addressChange(eventKey, e) {
+    this.setState({ address: eventKey });
   };
 
   // onSubmit={this.handleSubmit.bind(this)}
@@ -72,15 +72,6 @@ class Search extends React.Component {
             value={this.state.date}
             onChange={this.dateChange}
             placeholder="What date are you available?" />
-        </FormGroup>
-        <br /><br/>
-        <FormGroup controlId="formAddress">
-          <ControlLabel>Address</ControlLabel><br />
-          <FormControl
-            type="text"
-            value={this.state.address}
-            onChange={this.addressChange}
-            placeholder="Where will you be?" />
         </FormGroup>
         <br /><br/>
         <ButtonGroup>
