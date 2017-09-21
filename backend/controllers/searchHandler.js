@@ -11,6 +11,13 @@ const Participations = require('../models/usersEventsSchema.js');
 exports.checkUserEvents = (req, res, next) => {
   let user_id = req.body.user_id;
   let date = req.body.date;
+  if (!req.body.date) {
+    res.send({
+      success: 'failure',
+      message: 'Please enter a date and try again!!'
+    })
+    return
+  }
   sequelize.query(`
     select *
     from participations
@@ -23,7 +30,10 @@ exports.checkUserEvents = (req, res, next) => {
         next()
       }
       else {
-        res.send('Already have an event this day')
+        res.send({
+          success: 'failure',
+          message: 'Slow Down Party Animal, you already have an event that day, change the date and try again!!'
+        })
       }
     })
 }
@@ -33,79 +43,39 @@ exports.searchEvents = (req, res) => {
   let user_id = req.body.user_id
   let type = req.body.dinnerType;
   let address = req.body.address;
-  console.log(address)
+  let whereObj = {};
+  if (type) {
+    whereObj.dinner_type = type
+  }
+  if (address) {
+    whereObj.locality = address
+  }
+  console.log(whereObj)
   Events.findAll({
-    where: {
-      date: date,
-      dinner_type: type,
-      locality: address
-    }
+    where: whereObj
   })
   .then( (events) => {
     if (events.length > 0) {
-      let selectedEvent = events[0]
+      let randomSelection = Math.floor(Math.random() * events.length)
+      let selectedEvent = events[randomSelection]
       Participations.create({
         user_id: user_id,
         event_id: selectedEvent.id
       })
       .then(() => {
-        res.send('success');
+        res.send({
+          success: 'success',
+          message: 'Congradulations!!! You have joined an event!!'
+        });
       })
       .catch((err) => {
         console.error(err)
       })
     } else {
-      res.send(false)
+      res.send({
+        success: 'failure',
+        message: 'Cannot Find an Event with your preferences please try again. Or click "Host Event" above to create your own'
+      })
     }
   })
 };
-
-
-// exports.searchEvents = (req, res) => {
-//   let options = {
-//     provider: 'google',
-//     httpAdapter: 'https',
-//     apiKey: 'AIzaSyAW-bhpsTQLkZsOn_3dVOyde1WwxrIUhqU'
-//   };
-//   let geocoder = NodeGeocoder(options);
-//   geocoder.geocode(req.body.address)
-//   .then(function(mapRes) {
-//     let guestLatitude = mapRes[0].latitude;
-//     let guestLongitude = mapRes[0].longitude;
-//     let date = req.body.date;
-//     let user_id = req.body.user_id
-//     let type = req.body.dinnerType;
-//     Events.findAll({
-//       where: {
-//         date: date,
-//         dinner_type: type
-//       }
-//     })
-//     .then( (events) => {
-//       if (events.length > 0) {
-//         let userCoordinates = {lat: guestLatitude, lon: guestLongitude}
-//         let closestEvent = events.reduce((closest, event) => {
-//           let closestCoords = closest.address;
-//           let eventCoords = event.address;
-//           let closestDist = geodist(userCoordinates, {lat: closestCoords[0], lon: closestCoords[1]})
-//           let eventDist = geodist(userCoordinates, {lat: eventCoords[0], lon: eventCoords[1]})
-//           return closestDist > eventDist ? event : closest;
-//         })
-//         Participations.create({
-//           user_id: user_id,
-//           event_id: closestEvent.id
-//         })
-//         .then(() => {
-//           res.send('success');
-//         })
-//         .catch((err) => {
-//           console.error(err)
-//         })
-//       } else {
-//         res.send(false)
-//       }
-//     })
-//   })
-//   .catch(function(err) {
-//     console.log(err);
-//   });

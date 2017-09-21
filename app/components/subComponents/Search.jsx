@@ -4,13 +4,9 @@ import { Button, ButtonGroup, DropdownButton, MenuItem, Form, FormGroup, Control
 
 
 const WarningBanner = (props) => {
-  if (!props.error) {
-    return null;
-  }
-
   return (
-    <div className="error">
-      Cannot Find an Event with your preferences please try again. Or click "Host Event" above to create your own
+    <div className={props.message.success}>
+      {props.message.message}
     </div>
   );
 }
@@ -26,7 +22,7 @@ class Search extends React.Component {
       passwordValid: false,
       formValid: false,
       dinnerType: 'Dinner Type',
-      noEventFound: false
+      message: false
     }
     this.dinnerTypeChange = this.dinnerTypeChange.bind(this)
     this.dateChange = this.dateChange.bind(this)
@@ -43,9 +39,7 @@ class Search extends React.Component {
       dinnerType: this.state.dinnerType
     })
     .then(data => {
-      if (!data.data) {
-        this.setState({noEventFound: true})
-      }
+      this.setState({message: data.data})
     })
   }
 
@@ -114,7 +108,7 @@ class Search extends React.Component {
         <Button type="submit" onClick={this.handleSubmit}>
           Find My Event
         </Button>
-        <WarningBanner error={this.state.noEventFound}/>
+        <WarningBanner message={this.state.message}/>
       </Form>
     )
   }
