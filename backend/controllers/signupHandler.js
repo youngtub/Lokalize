@@ -25,31 +25,10 @@ exports.handleSignup = (req, res) => {
         }
       })
       .catch((err) => {
-    res.status(404).send('eff this one')
+        res.status(404).send('eff this one')
+      })
   })
-
-    .catch((err) => {
-    res.status(404).send('eff this two')
-  })
-  // })
   .catch((err) => {
     res.status(404).send('this is the error', err)
   })
 };
-
-// var locationAPICall = (locationString) => {
-//   var location = locationString.replace(/ /g, '%20');
-//   var reqUrl = "https://developers.zomato.com/api/v2.1/locations?query=" + location;
-//   var config = {
-//     "headers" : {
-//   	   "Content-Type": "application/json",
-//   	    "user-key": "0531c898c316947b94f8b79453e43caf"
-//       }
-//     };
-//   return axios.get(reqUrl, config)
-//   .then( (results) => {
-//     console.log('RESULTS', results)
-//   	return cityId = results.data.location_suggestions[0].entity_id;
-//   })
-//   .catch( (err) => console.error(err));
-// }
