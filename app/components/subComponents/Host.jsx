@@ -117,10 +117,6 @@ class Host extends React.Component {
             <FormControl.Feedback />
           </FormGroup>
 
-          <Debounce time="400" handler="onChange">
-            <input onChange={this.locationChange}></input>
-          </Debounce>
-
           <ButtonToolbar>
             <Button bsStyle="primary" bsSize="large" type="submit" onClick={this.clickCreate}>Create Event</Button>
             <Button bsStyle="warning" bsSize="small" type="reset" onClick={this.clickCancel}>Nevermind</Button>
