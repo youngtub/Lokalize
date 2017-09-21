@@ -3,7 +3,7 @@ import Host from './subComponents/Host.jsx';
 import ListEntryCreate from './subComponents/ListEntryCreate.jsx';
 import { Container, Jumbotron } from 'react-bootstrap';
 import axios from 'axios';
-
+import {Redirect} from 'react-router-dom';
 
 class Home extends React.Component {
   constructor(props) {
@@ -11,16 +11,18 @@ class Home extends React.Component {
     this.state = {
       restaurants: [],
       venue: '',
-      address: ''
+      address: '',
+      locality: ''
     }
     this.restaurantsCallback = this.restaurantsCallback.bind(this);
     this.selectRestaurantCallback = this.selectRestaurantCallback.bind(this);
     this.submitEvent = this.submitEvent.bind(this);
   }
 
-  restaurantsCallback(restaurantArray) {
+  restaurantsCallback(restaurantArray, locality) {
     this.setState({
-      restaurants: restaurantArray
+      restaurants: restaurantArray,
+      locality: locality
     })
   }
 
@@ -31,22 +33,20 @@ class Home extends React.Component {
     })
   }
 
-  submitEvent(name, type, date) {
-    console.log('ABOUT TO SEND POST REQUEST');
-    console.log('Parameters', name, type, date, this.state.venue, this.state.address, this.props.userid);
-
+  submitEvent(name, type, date, capacity) {
+    console.log('POST req Parameters', name, type, date, this.state.venue, this.state.address, this.props.userid, this.state.locality, capacity);
       axios.post('/api/form', {
         name: name,
         dinnerType: type,
         date: date,
+        capacity: capacity,
         location: this.state.venue,
         address: this.state.address,
-        capacity: 10,
-        userid: this.props.userid
+        userid: this.props.userid,
+        locality: this.state.locality
       })
       .then( (response) => {
-        // console.log('Event sent to back end');
-        console.log(response);
+        alert('Event successfully created!');
       })
   }
 

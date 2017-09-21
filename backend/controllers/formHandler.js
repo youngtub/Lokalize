@@ -23,6 +23,8 @@ exports.handleForm = (req, res) => {
   data["address"] = req.body.address;
   data["capacity"] = req.body.capacity;
   data["userid"] = req.body.userid;
+  data["locality"] = req.body.locality;
+  data["capacity"] = req.body.capacity;
   events.findAll({where:
     {
       name: data.name,
@@ -45,10 +47,12 @@ exports.handleForm = (req, res) => {
         name: data.name,
         dinner_type: data.dinnerType,
         date: data.date,
+        capacity: data.capacity,
         location: data.location,
         address: coords,
         capacity: data.capacity,
-        userId: data.userid
+        userId: data.userid,
+        locality: data.locality
       })
       .then((data) => {
         res.send('Event Created')
