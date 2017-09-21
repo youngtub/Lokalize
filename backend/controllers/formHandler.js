@@ -52,8 +52,7 @@ exports.handleForm = (req, res) => {
         address: coords,
         capacity: data.capacity,
         userId: data.userid,
-        locality: data.locality,
-        street: req.body.address
+        locality: data.locality
       })
       .then((data) => {
         res.send('Event Created')
