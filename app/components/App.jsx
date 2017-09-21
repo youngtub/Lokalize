@@ -96,7 +96,7 @@ class App extends React.Component {
             this.requireAuth() ? (
               <Redirect to="/login"/>
             ) : (
-              <Home />
+              <Home username={this.state.username}/>
             )
           )}/>
 

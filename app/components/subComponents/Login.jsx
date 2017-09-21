@@ -47,5 +47,3 @@ export default Login;
 
 
 // 'Create Account' button might need to be moved to Signup.jsx for modularity
-
-

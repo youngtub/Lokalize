@@ -30,17 +30,17 @@ class Home extends React.Component {
         if(events.data.length) {
           this.setState({events: events.data});
           console.log('got events back', this.state.events)
-        } 
+        }
       })
       .catch((err) => {
         console.error('axios GET error: ', err);
       })
   }
-  
+
 
   render() {
     return (
-      <div> 
+      <div>
         <Weather />,
         <Jumbotron>
           <MapWithADirectionsRenderer />,
