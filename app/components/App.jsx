@@ -21,11 +21,10 @@ class App extends React.Component {
     this.onLogout = this.onLogout.bind(this)
   }
 
-  onSignup(username, password, cityName) {
+  onSignup(username, password) {
     axios.post('/api/signup', {
       username: username,
-      password: password,
-      cityName: cityName
+      password: password
     })
     .then((res) => {
       if (res.data === true) {
