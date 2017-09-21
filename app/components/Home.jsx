@@ -11,6 +11,7 @@ class Home extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      startAddress: '',
       events: [{
         "username": "",
         "eventname": "Slices with Strangers",
@@ -24,26 +25,29 @@ class Home extends React.Component {
 
   componentDidMount () {
     let username = this.props.username;
-    console.log('component mounted', username)
     axios.get('/api/home', {params: {username}})
       .then((events) => {
         if(events.data.length) {
           this.setState({events: events.data});
-          console.log('got events back', this.state.events)
-        }
+        } 
       })
       .catch((err) => {
         console.error('axios GET error: ', err);
       })
   }
-
+  
+  addressChange (e) {
+    let address = e.target.value;
+    //google converter to lat and long    
+  }
 
   render() {
     return (
       <div>
         <Weather />,
+     
         <Jumbotron>
-          <MapWithADirectionsRenderer />,
+          <MapWithADirectionsRenderer address={this.state.startAddress} />,
         </Jumbotron>,
         <Table responsive>
           <thead>
@@ -55,12 +59,17 @@ class Home extends React.Component {
             </tr>
           </thead>
           <tbody>
-            <tr>
-              { this.state.events.map((event) => ( <td>{event.eventname}</td> )) }
-              { this.state.events.map((event) => ( <td>{event.dinner_type}</td> )) }
-              { this.state.events.map((event) => ( <td>{event.eventdate}</td> )) }
-              { this.state.events.map((event) => ( <td>{event.eventlocation}</td> )) }
-            </tr>
+            
+              { this.state.events.map((event) => ( 
+                <tr>
+                  <td>{event.eventname}</td>
+                  <td>{event.dinner_type}</td>
+                  <td>{event.eventdate}</td>
+                  <td>{event.eventlocation}</td>
+                </tr>
+               )) 
+              }
+            
           </tbody>
         </Table>
       </div>
@@ -68,7 +77,4 @@ class Home extends React.Component {
   }
 }
 
-{/* array with objects first map then for in set  */}
 export default Home;
-
-{/* <ListEntry entries={this.state.events} /> */}
