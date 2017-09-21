@@ -5,13 +5,13 @@ import Search from './subComponents/Search.jsx';
 import MapWithADirectionsRenderer from './subComponents/Map.jsx';
 // import Calendar from './subComponents/Calendar.jsx';
 import ListEntry from './subComponents/ListEntry.jsx';
-import { Container, Jumbotron, Table, FormGroup, FormControl, } from 'react-bootstrap';
+import { Button, Container, Jumbotron, Table, FormGroup, FormControl, } from 'react-bootstrap';
 
 class Home extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      endAddress:  [],
+      endAddress: [],
       events: [{
         "username": "",
         "eventname": "Slices with Strangers",
@@ -21,6 +21,7 @@ class Home extends React.Component {
         "capacity": null
     }]
     }
+    this.eventClick = this.eventClick.bind(this)
   }
 
   componentDidMount () {
@@ -36,12 +37,20 @@ class Home extends React.Component {
       })
   }
 //create an on click that sets the end address
+  eventClick(e) {
+    console.log(`here is event coords ${e.target.value}`)
+    let endAddress = e.target.value;
+    this.setState({endAddress: endAddress}, () => {
+      console.log(`print this ${this.state.endAddress}`)
+    })
+    
+  }
   render() {
     return (
       <div>
         <Weather />,
         <Jumbotron>
-          <MapWithADirectionsRenderer endAddress={this.state.events[0].coordinates} />,
+          <MapWithADirectionsRenderer endAddress={this.state.endAddress || [40.750572, -73.976417]} />,
         </Jumbotron>,
         <Table responsive>
           <thead>
@@ -50,16 +59,18 @@ class Home extends React.Component {
               <th>Dinner Type</th>
               <th>Date of Event</th>
               <th>Location</th>
+              <th></th>
             </tr>
           </thead>
           <tbody>
             
               { this.state.events.map((event) => ( 
                 <tr>
-                  <td>{event.eventname}</td>
+                  <td>{event.dinner_type}</td>
                   <td>{event.dinner_type}</td>
                   <td>{event.eventdate}</td>
                   <td>{event.eventlocation}</td>
+                  <td><Button bsSize="xsmall" onClick={this.eventClick}  value={event.coordinates}>Get Directions</Button></td>
                 </tr>
                )) 
               }

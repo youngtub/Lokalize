@@ -21,7 +21,7 @@ const MapWithADirectionsRenderer = compose(
       this.setState({
         bounds: null,
         center: {
-          lat: 41.9, lng: -87.624
+          lat: 40.75057, lng: -73.97641
         },
         markers: [],
         onMapMounted: ref => {
@@ -40,7 +40,7 @@ const MapWithADirectionsRenderer = compose(
          
           const places = refs.searchBox.getPlaces();
           const bounds = new google.maps.LatLngBounds();
-          console.log(`our props are ${this.props.endAddress}`)
+          console.log(`our props are ${this.props.endAddress}`,(typeOf(this.props.endAddress)))
           console.log('this is happening', places[0].geometry.viewport)
           places.forEach(place => {
             if (place.geometry.viewport) {
@@ -58,19 +58,17 @@ const MapWithADirectionsRenderer = compose(
             center: nextCenter,
             markers: nextMarkers,
           });
-          //on places changed
-          //figure out how to get lat and long
-          //after place changed - invoke route method with new lat and loung
-          //can use internal variable - route will update directions prop
-          // refs.map.fitBounds(bounds);const DirectionsService = new google.maps.DirectionsService();
+         console.log(`${this.props.endAddress} our props is here`)
+          // refs.map.fitBounds(bounds);
           let startLong = places[0].geometry.viewport.b.b;
           let startLat = places[0].geometry.viewport.f.b;
-          
+          let endLat = this.props.endAddress[0];
+          let endLong = this.props.endAddress[1];
           const DirectionsService = new google.maps.DirectionsService();
-          console.log(`here is the coords long ${endLong} and lat ${endLat}`)
+          if (endLat && endLong) {
           DirectionsService.route({
             origin: new google.maps.LatLng(startLat, startLong),
-            destination: new google.maps.LatLng(this.props.endAddress[0], this.props.endAddress[1]),
+            destination: new google.maps.LatLng(endLat, endLong),
             travelMode: google.maps.TravelMode.WALKING,
           }, (result, status) => {
             if (status === google.maps.DirectionsStatus.OK) {
@@ -81,32 +79,33 @@ const MapWithADirectionsRenderer = compose(
               console.error(`error fetching directions ${result}`);
             }
           });
+        }
         },
       })
     },
-    componentDidMount() {
-      const DirectionsService = new google.maps.DirectionsService();
+    // componentDidMount() {
+    //   const DirectionsService = new google.maps.DirectionsService();
       
-      DirectionsService.route({
-        origin: new google.maps.LatLng(40.750572, -73.976417),
-        destination: new google.maps.LatLng(40.747215, -73.984647),
-        travelMode: google.maps.TravelMode.WALKING,
-      }, (result, status) => {
-        if (status === google.maps.DirectionsStatus.OK) {
-          this.setState({
-            directions: result,
-          });
-        } else {
-          console.error(`error fetching directions ${result}`);
-        }
-      });
-    }
+    //   DirectionsService.route({
+    //     origin: new google.maps.LatLng(40.750572, -73.976417),
+    //     destination: new google.maps.LatLng(40.747215, -73.984647),
+    //     travelMode: google.maps.TravelMode.WALKING,
+    //   }, (result, status) => {
+    //     if (status === google.maps.DirectionsStatus.OK) {
+    //       this.setState({
+    //         directions: result,
+    //       });
+    //     } else {
+    //       console.error(`error fetching directions ${result}`);
+    //     }
+    //   });
+    // } lat: 40.75, lng: -73.97
   })
 )(function(props) {
   return (
   <GoogleMap
-    defaultZoom={7}
-    defaultCenter={new google.maps.LatLng(51.5033640, -73.9764010)}
+    defaultZoom={14}
+    defaultCenter={new google.maps.LatLng(40.75057, -73.97641)}
   >
     <SearchBox
       ref={props.onSearchBoxMounted}
