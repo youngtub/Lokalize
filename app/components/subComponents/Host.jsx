@@ -12,7 +12,7 @@ class Host extends React.Component {
       name: '',
       type: '',
       date: '',
-      locationForQuery: '' 
+      locationForQuery: ''
     },
 
     this.nameChange = this.nameChange.bind(this);
@@ -57,7 +57,8 @@ class Host extends React.Component {
     })
   };
 
-  clickCreate() {
+  clickCreate(e) {
+    e.preventDefault();
     this.props.submitEventCallback(this.state.name, this.state.type, this.state.date);
   };
 
