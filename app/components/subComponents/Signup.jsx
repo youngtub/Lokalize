@@ -54,6 +54,7 @@ class Signup extends React.Component {
           Username: <input type="text" value={this.state.username} onChange={this.handleUsernameChange.bind(this)}/>
           Password: <input type="password" value={this.state.password} onChange={this.handlePasswordChange.bind(this)}/>
         <Button type="submit" value="Submit" onClick={this.checkUsernamePassword.bind(this)}>Create My Account</Button><br/>
+          Username and password should be between 6 and 12 characters.
         <SignupWarning message={this.state.message}/>
       </div>
       )
