@@ -26,7 +26,7 @@ exports.handleSignup = (req, res) => {
         }
       })
       .catch((err) => {
-        res.status(404).send('eff this one')
+        res.status(404).send('error in first catch')
       })
   })
   .catch((err) => {
