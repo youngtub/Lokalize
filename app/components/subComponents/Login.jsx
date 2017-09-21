@@ -1,5 +1,6 @@
 import React from 'react';
 import {Button, FormControl, FormGroup} from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 
 class Login extends React.Component {
   constructor(props) {
@@ -32,9 +33,11 @@ class Login extends React.Component {
           Username: <input type="text" name="fname" onChange={this.usernameChange}/><br/>
           Password: <input type="text" name="lname" onChange={this.passwordChange}/>
         </form>
-        <Button bsSize="lg">
-          Create Account
-        </Button>
+        <Link to="/signup">
+          <Button bsSize="lg">
+            Create Account
+          </Button>
+        </Link>
         <Button bsSize="lg" onClick={this.onSubmit}>
           Login
         </Button>
