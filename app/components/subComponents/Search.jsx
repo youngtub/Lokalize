@@ -20,7 +20,7 @@ class Search extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      address: '',
+      address: 'Select Locality',
       date: '',
       emailValid: false,
       passwordValid: false,
@@ -57,8 +57,8 @@ class Search extends React.Component {
     this.setState({ date: e.target.value });
   };
 
-  addressChange(e) {
-    this.setState({ address: e.target.value });
+  addressChange(eventKey, e) {
+    this.setState({ address: eventKey });
   };
 
   // onSubmit={this.handleSubmit.bind(this)}
@@ -74,15 +74,30 @@ class Search extends React.Component {
             placeholder="What date are you available?" />
         </FormGroup>
         <br /><br/>
-        <FormGroup controlId="formAddress">
-          <ControlLabel>Address</ControlLabel><br />
-          <FormControl
-            type="text"
-            value={this.state.address}
-            onChange={this.addressChange}
-            placeholder="Where will you be?" />
-        </FormGroup>
-        <br /><br/>
+        <ButtonGroup>
+          <DropdownButton
+            title={this.state.address}
+            id="bg-nested-dropdown"
+            onSelect={this.addressChange}
+          >
+            <MenuItem eventKey="Chelsea" >Chelsea</MenuItem>
+            <MenuItem eventKey="East Village" >East Village</MenuItem>
+            <MenuItem eventKey="Financial District" >Financial District</MenuItem>
+            <MenuItem eventKey="Flatiron" >Flatiron</MenuItem>
+            <MenuItem eventKey="Gramercy" >Gramercy</MenuItem>
+            <MenuItem eventKey="Greenwich Village" >Greenwich Village</MenuItem>
+            <MenuItem eventKey="Lower East Side" >Lower East Side</MenuItem>
+            <MenuItem eventKey="Lower West Side" >Lower West Side</MenuItem>
+            <MenuItem eventKey="Midtown" >Midtown</MenuItem>
+            <MenuItem eventKey="Soho" >Soho</MenuItem>
+            <MenuItem eventKey="Tribeca" >Tribeca</MenuItem>
+            <MenuItem eventKey="Union Square" >Union Square</MenuItem>
+            <MenuItem eventKey="Upper East Side" >Upper East Side</MenuItem>
+            <MenuItem eventKey="Upper West Side" >Upper West Side</MenuItem>
+            <MenuItem eventKey="West Village" >West Village</MenuItem>
+            <MenuItem eventKey="" >No Preference</MenuItem>
+          </DropdownButton>
+        </ButtonGroup><br/><br/>
       <ButtonGroup>
         <DropdownButton
           title={this.state.dinnerType}
@@ -95,7 +110,7 @@ class Search extends React.Component {
           <MenuItem eventKey="Vegetarian" >Vegetarian</MenuItem>
           <MenuItem eventKey="" >No Preference</MenuItem>
         </DropdownButton>
-      </ButtonGroup><br /><br/>
+      </ButtonGroup><br/><br/>
         <Button type="submit" onClick={this.handleSubmit}>
           Find My Event
         </Button>
