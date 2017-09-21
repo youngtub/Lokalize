@@ -44,7 +44,7 @@ class Host extends React.Component {
 
   locationChange(e) {
     this.setState({ locationForQuery: e.target.value });
-    var reqUrl = "https://developers.zomato.com/api/v2.1/search?entity_id=280&entity_type=city&q=280" + this.state.locationForQuery;
+    var reqUrl = "https://developers.zomato.com/api/v2.1/search?entity_id=280&entity_type=city&q=" + this.state.locationForQuery;
     var config = {
       "headers" : {
     	   "Content-Type": "application/json",
