@@ -2,8 +2,17 @@ const express = require('express');
 const Sequelize = require('sequelize');
 const events = require('../models/eventSchema');
 const parser = require('body-parser');
+const NodeGeocoder = require('node-geocoder');
+
+let options = {
+  provider: 'google',
+  httpAdapter: 'https',
+  apiKey: 'AIzaSyAW-bhpsTQLkZsOn_3dVOyde1WwxrIUhqU'
+};
+let geocoder = NodeGeocoder(options);
 
 exports.handleForm = (req, res) => {
+  console.log('DATA in form handler', data);
   var data = {};
   // data.username = req.body.username;
   // const password = req.body.password;
@@ -20,27 +29,31 @@ exports.handleForm = (req, res) => {
       date: data.date
     }
   })
-  .then((exists) => {
+  .then( (exists) => {
     if (exists.length !== 0) {
       res.send('Event already exists!');
-      return
+      return 
     }
-    events.create({
-      name: data.name,
-      dinner_type: data.dinnerType,
-      date: data.date,
-      location: data.location,
-      address: data.address,
-      capacity: data.capacity
+    geocoder.geocode(req.body.address)
+    .then(function(mapRes) {
+      var coords = []
+      coords[0] = mapRes[0].latitude;
+      coords[1] = mapRes[0].longitude;
+
+      events.create({
+        name: data.name,
+        dinner_type: data.dinnerType,
+        date: data.date,
+        location: data.location,
+        address: coords,
+        capacity: data.capacity
+      })
+      .then((data) => {
+        res.send('Event Created')
+      })
+      .catch(err => {
+        console.log(err)
+      });
     })
-    .then((data) => {
-      res.send('Event Created')
-    })
-    .catch(err => {
-      console.log(err)
-    });
-  })
-  .catch(err => {
-    console.log(err)
   });
 };
