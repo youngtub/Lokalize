@@ -40,14 +40,14 @@ class Home extends React.Component {
   eventClick(e) {
     console.log(`here is event coords ${e.target.value}`)
     let endAddress = e.target.value;
+    endAddress = endAddress.split(',').map((number) => parseFloat(number))
     this.setState({endAddress: endAddress}, () => {
       console.log(`print this ${this.state.endAddress}`)
-    })
-    
+    }) 
   }
   render() {
     return (
-      <div>
+      <div> 
         <Weather />,
         <Jumbotron>
           <MapWithADirectionsRenderer endAddress={this.state.endAddress || [40.750572, -73.976417]} />,
@@ -58,7 +58,8 @@ class Home extends React.Component {
               <th>Event</th>
               <th>Dinner Type</th>
               <th>Date of Event</th>
-              <th>Location</th>
+              <th>Restaurant</th>
+              <th>Address</th>
               <th></th>
             </tr>
           </thead>
@@ -66,10 +67,11 @@ class Home extends React.Component {
             
               { this.state.events.map((event) => ( 
                 <tr>
-                  <td>{event.dinner_type}</td>
+                  <td>{event.eventname}</td>
                   <td>{event.dinner_type}</td>
                   <td>{event.eventdate}</td>
                   <td>{event.eventlocation}</td>
+                  <td>{event.street}</td>
                   <td><Button bsSize="xsmall" onClick={this.eventClick}  value={event.coordinates}>Get Directions</Button></td>
                 </tr>
                )) 
