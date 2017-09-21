@@ -113,7 +113,9 @@ class App extends React.Component {
               <Create userid={this.state.uid}/>
             )
           )}/>
-
+          <Route exact path='*' render={() => (
+            <Redirect to="/login"/>
+          )}/>
         </Switch>
       </div>
     )
