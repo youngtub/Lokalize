@@ -13,17 +13,17 @@ exports.handleSignup = (req, res) => {
     if (usernameAlreadyInUse) {
       return res.send(false);
     }
-    var newUser = users.create({
-      username: user.username,
-      password: user.password,
-    })
-    .then((newUser) => {
-      if (newUser) {
-        res.send(true); //true, setState
-      } else {
-        console.error('Error:', err);
-      }
-    })
+      var newUser = users.create({
+        username: user.username,
+        password: user.password
+      })
+      .then((newUser) => {
+        if (newUser) {
+          res.send(true);
+        } else {
+          console.error('Error:', err);
+        }
+      })
       .catch((err) => {
     res.status(404).send('eff this one')
   })
@@ -31,7 +31,7 @@ exports.handleSignup = (req, res) => {
     .catch((err) => {
     res.status(404).send('eff this two')
   })
-  })
+  // })
   .catch((err) => {
     res.status(404).send('this is the error', err)
   })
