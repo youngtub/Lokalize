@@ -28,13 +28,11 @@ class App extends React.Component {
     })
     .then((res) => {
       if (res.data === true) {
-        // console.log('res.data = true', res.data)
         this.setState({
           isLoggedIn: true,
           username: username
         })
       } else {
-        // console.log('res.data = false', res.data)
         this.setState({
           isLoggedIn: false,
           username: ''
@@ -77,9 +75,9 @@ class App extends React.Component {
         <Switch>
           <Route path='/signup' render={() => (
             this.requireAuth() ? (
-            <Signup onSignup={this.onSignup.bind(this)}/>
+            <Signup onSignup={this.onSignup.bind(this)} />
           ) : (
-            <Redirect to="/home" />
+            <Redirect to="/home"/>
           )
           )}/>
 

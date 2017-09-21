@@ -23,13 +23,12 @@ class Signup extends React.Component {
     })
   }
 
-
   render() {
     return(
       <div>
         Username: <input type="text" value={this.state.username} onChange={this.handleUsernameChange.bind(this)}/>
         Password: <input type="text" value={this.state.password} onChange={this.handlePasswordChange.bind(this)}/>
-        <button type="submit" value="Submit" onClick={() => this.props.onSignup(this.state.username, this.state.password)}>Create Account</button>
+      <Button type="submit" value="Submit" onClick={() => this.props.onSignup(this.state.username, this.state.password, this.state.cityName)}>Create My Account</Button>
       </div>
 
       )
