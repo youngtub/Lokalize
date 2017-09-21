@@ -1,6 +1,9 @@
 import React from 'react';
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> formdata
 import $ from 'jquery';
 //list
 
@@ -18,6 +21,7 @@ const ListEntryCreate = (props) => {
     <div id='options'>
       {props.entries.map( (entry, ind) => (
         <div style={itemStyle} onClick={handleSelect} key={ind} id={entry.restaurant.name} className={entry.restaurant.location.address} >
+<<<<<<< HEAD
 =======
 =======
 import $ from 'jquery';
@@ -45,11 +49,14 @@ const ListEntryCreate = (props) => {
       {props.entries.map( (entry, ind) => (
         <div style={itemStyle} onClick={handleSelect} key={ind} id={entry.restaurant.name} className={entry.restaurant.location.address} >
 >>>>>>> merge conflicts fixed
+=======
+>>>>>>> formdata
             Name: {entry.restaurant.name}<br></br>
             Cuisine: {entry.restaurant.cuisines}<br></br>
             Locality: {entry.restaurant.location.locality}<br></br>
             Rating: {entry.restaurant.user_rating.aggregate_rating}<br></br>
             <img src={entry.restaurant.thumb} width={100} height={100}></img><br></br>
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
       </div>
@@ -73,6 +80,8 @@ const itemStyle = {
 };
 >>>>>>> working on selecting venue
 =======
+=======
+>>>>>>> formdata
       </div>
         ))}
   </div> )
@@ -86,6 +95,9 @@ const itemStyle = {
   textAlign: 'center'
 }
 
+<<<<<<< HEAD
 >>>>>>> merge conflicts fixed
+=======
+>>>>>>> formdata
 
 export default ListEntryCreate;
