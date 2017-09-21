@@ -51,10 +51,8 @@ class Host extends React.Component {
     	    "user-key": "0531c898c316947b94f8b79453e43caf"
         }
       };
-    console.log('state location query', this.state.locationForQuery)
     axios.get(reqUrl, config)
     .then( (results) => {
-      console.log('API call', results);
       this.props.getAllRestaurantsFromQuery(results.data.restaurants);
     })
   };
