@@ -22,6 +22,7 @@ exports.handleForm = (req, res) => {
   data["location"] = req.body.location;
   data["address"] = req.body.address;
   data["capacity"] = req.body.capacity;
+  data["userid"] = req.body.userid;
   events.findAll({where:
     {
       name: data.name,
@@ -32,7 +33,7 @@ exports.handleForm = (req, res) => {
   .then( (exists) => {
     if (exists.length !== 0) {
       res.send('Event already exists!');
-      return 
+      return
     }
     geocoder.geocode(req.body.address)
     .then(function(mapRes) {
@@ -46,9 +47,11 @@ exports.handleForm = (req, res) => {
         date: data.date,
         location: data.location,
         address: coords,
-        capacity: data.capacity
+        capacity: data.capacity,
+        userId: data.userid
       })
       .then((data) => {
+        console.log('DATA in form handler', data);
         res.send('Event Created')
       })
       .catch(err => {
