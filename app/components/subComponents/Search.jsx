@@ -2,6 +2,20 @@ import React from 'react';
 import axios from 'axios';
 import { Button, ButtonGroup, DropdownButton, MenuItem, Form, FormGroup, ControlLabel, FormControl } from 'react-bootstrap';
 
+
+const WarningBanner = (props) => {
+  if (!props.error) {
+    return null;
+  }
+
+  return (
+    <div className="error">
+      Cannot Find an Event with your preferences please try again. Or click "Host Event" above to create your own
+    </div>
+  );
+}
+
+
 class Search extends React.Component {
   constructor(props) {
     super(props);
@@ -11,7 +25,8 @@ class Search extends React.Component {
       emailValid: false,
       passwordValid: false,
       formValid: false,
-      dinnerType: 'Dinner Type'
+      dinnerType: 'Dinner Type',
+      noEventFound: false
     }
     this.dinnerTypeChange = this.dinnerTypeChange.bind(this)
     this.dateChange = this.dateChange.bind(this)
@@ -27,15 +42,12 @@ class Search extends React.Component {
       date: this.state.date,
       dinnerType: this.state.dinnerType
     })
-    .then(data => console.log(data))
+    .then(data => {
+      if (!data.data) {
+        this.setState({noEventFound: true})
+      }
+    })
   }
-
-  // handleChange(event){
-  //   let property = event.target.value;
-  //   let state = {};
-  //   state[property] = event.target.value;
-  //   this.setState(state)
-  // }
 
   dinnerTypeChange(eventKey, e) {
     this.setState({ dinnerType: eventKey });
@@ -87,9 +99,12 @@ class Search extends React.Component {
         <Button type="submit" onClick={this.handleSubmit}>
           Find My Event
         </Button>
+        <WarningBanner error={this.state.noEventFound}/>
       </Form>
     )
   }
 };
+
+
 
 export default Search;

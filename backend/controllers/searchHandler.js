@@ -69,7 +69,7 @@ exports.searchEvents = (req, res) => {
           console.error(err)
         })
       } else {
-        res.send('There were no events matching your search, but we encourage you to be the first!')
+        res.send(false)
       }
     })
   })

@@ -97,6 +97,7 @@ class App extends React.Component {
               <Redirect to="/login"/>
             ) : (
               <Home username={this.state.username} />
+
             )
           )}/>
 

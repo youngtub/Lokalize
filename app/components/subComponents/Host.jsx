@@ -44,7 +44,7 @@ class Host extends React.Component {
 
   locationChange(e) {
     this.setState({ locationForQuery: e.target.value });
-    var reqUrl = "https://developers.zomato.com/api/v2.1/search?entity_id=280&entity_type=city&q=" + this.state.locationForQuery;
+    var reqUrl = "https://developers.zomato.com/api/v2.1/search?entity_id=280&entity_type=city&q=280";
     var config = {
       "headers" : {
     	   "Content-Type": "application/json",
@@ -57,7 +57,8 @@ class Host extends React.Component {
     })
   };
 
-  clickCreate() {
+  clickCreate(e) {
+    e.preventDefault();
     this.props.submitEventCallback(this.state.name, this.state.type, this.state.date);
   };
 
@@ -115,10 +116,6 @@ class Host extends React.Component {
           </Debounce>
             <FormControl.Feedback />
           </FormGroup>
-
-          <Debounce time="400" handler="onChange">
-            <input onChange={this.locationChange}></input>
-          </Debounce>
 
           <ButtonToolbar>
             <Button bsStyle="primary" bsSize="large" type="submit" onClick={this.clickCreate}>Create Event</Button>
