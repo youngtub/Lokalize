@@ -95,10 +95,10 @@ class Host extends React.Component {
   render() {
     return (
       <div>
-        <h1 className="createEventHeader"> Create an Event! </h1> <br></br>
-        <Form className="createEventForm">
+        <h1 className="CreateEventHeader"> Create an Event! </h1> <br></br>
+        <Form className="EventForm">
 
-          <FormGroup className="eventName" controlId="name" validationState={this.getValidationSate(this.state.name)}>
+          <FormGroup className="EventFormField" controlId="name" validationState={this.getValidationSate(this.state.name)}>
             <FormControl
               type="text"
               value={this.state.name}
@@ -113,6 +113,7 @@ class Host extends React.Component {
                 title={this.state.type}
                 id="bg-nested-dropdown"
                 onSelect={this.typeChange}
+                className="EventFormField"
               >
                 <MenuItem eventKey="American" >American</MenuItem>
                 <MenuItem eventKey="Asian" >Asian</MenuItem>
@@ -132,7 +133,7 @@ class Host extends React.Component {
               </DropdownButton>
             </ButtonGroup><br/><br/>
 
-          <FormGroup className="capacityField" controlId="capacity">
+          <FormGroup className="EventFormField" controlId="capacity">
               <FormControl
                 type="number"
                 value={this.state.capacity}
@@ -142,7 +143,7 @@ class Host extends React.Component {
               <FormControl.Feedback />
             </FormGroup>
 
-          <FormGroup className="dateInput" controlId="date" validationState={this.getValidationSate(this.state.date)}>
+          <FormGroup className="EventFormField" controlId="date" validationState={this.getValidationSate(this.state.date)}>
             <FormControl
               type="date"
               value={this.state.date}
@@ -157,6 +158,7 @@ class Host extends React.Component {
               title={this.state.locationForQuery}
               id="bg-nested-dropdown"
               onSelect={this.locationChange}
+              className="EventFormField"
             >
               <MenuItem eventKey="Chelsea" >Chelsea</MenuItem>
               <MenuItem eventKey="East Village" >East Village</MenuItem>
@@ -175,10 +177,10 @@ class Host extends React.Component {
           </ButtonGroup><br/><br/>
 
           <ButtonToolbar>
+            <Button bsStyle="warning" bsSize="small" type="reset" onClick={this.clickCancel}>Nevermind</Button><br></br>
             {!this.props.isRestaurantSelected ? '' :
             <Button bsStyle="primary" bsSize="large" type="submit" onClick={this.clickCreate}>Create Event</Button>
             }
-          <Button bsStyle="warning" bsSize="small" type="reset" onClick={this.clickCancel}>Nevermind</Button>
           </ButtonToolbar><br/>
         </Form>
       </div>
