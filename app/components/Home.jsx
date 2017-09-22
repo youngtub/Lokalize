@@ -41,7 +41,7 @@ class Home extends React.Component {
     let endAddress = e.target.value;
     endAddress = endAddress.split(',').map((number) => parseFloat(number))
     this.setState({endAddress: endAddress}, () => {
-      this.setState({endAddress: []})
+      this.setState({endAddress: []}) //We need two set state calls in order for the map to render the correct directions DO NOT TOUCH
     })
   }
   render() {
