@@ -49,7 +49,7 @@ class Home extends React.Component {
       <div>
         <Weather />,
         <Jumbotron>
-          <MapWithADirectionsRenderer test={this.state.test} endAddress={this.state.endAddress || [40.750572, -73.976417]} />,
+          <MapWithADirectionsRenderer endAddress={this.state.endAddress || [40.750572, -73.976417]} />,
         </Jumbotron>,
         <Table responsive>
           <thead>
