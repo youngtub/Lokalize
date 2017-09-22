@@ -5,6 +5,21 @@ import { Container, Jumbotron } from 'react-bootstrap';
 import axios from 'axios';
 import {Redirect} from 'react-router-dom';
 
+const WarningBanner = (props) => {
+
+  let html = (<div className={props.message.success}>
+                {props.message.message}
+              </div>)
+  if (props.message.success === 'success'){
+    html = (<div className={props.message.success}>
+              {props.message.message} <Link to="/home">Click here to go back to the homepage</Link>
+            </div>)
+  }
+  return (
+    html
+  );
+}
+
 class Home extends React.Component {
   constructor(props) {
     super(props);
@@ -14,6 +29,11 @@ class Home extends React.Component {
       address: '',
       locality: '',
       isRestaurantSelected: false
+      message: {
+        success: '',
+        message: ''
+      },
+      eventSuccessful: ''
     }
     this.restaurantsCallback = this.restaurantsCallback.bind(this);
     this.selectRestaurantCallback = this.selectRestaurantCallback.bind(this);
@@ -47,14 +67,26 @@ class Home extends React.Component {
         userid: this.props.userid,
         locality: this.state.locality
       })
-      .then( (response) => {
-        alert('Event successfully created!');
+      .then( (data) => {
+        if (data.data.success === 'success'){
+          this.setState({
+            message: data.data,
+            eventSuccessful: true
+          })
+          return
+        }
+        this.setState({
+          message: data.data,
+          eventSuccessful: false
+        })
+
       })
   }
 
   render() {
     return (
       <div>
+        <WarningBanner message={this.state.message}/>
         <Host getAllRestaurantsFromQuery={this.restaurantsCallback} submitEventCallback={this.submitEvent} isRestaurantSelected={this.state.isRestaurantSelected}/>
         <ListEntryCreate entries = {this.state.restaurants} selectCallback={this.selectRestaurantCallback}/>
       </div>

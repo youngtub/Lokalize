@@ -127,7 +127,6 @@ class Host extends React.Component {
                 <MenuItem eventKey="Seafood" >Seafood</MenuItem>
                 <MenuItem eventKey="Steak" >Steak</MenuItem>
                 <MenuItem eventKey="Vegetarian" >Vegetarian</MenuItem>
-                <MenuItem eventKey="" >No Preference</MenuItem>
               </DropdownButton>
             </ButtonGroup><br/><br/>
 

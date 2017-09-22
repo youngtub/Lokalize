@@ -12,6 +12,59 @@ let options = {
 };
 let geocoder = NodeGeocoder(options);
 
+
+exports.formChecks = (req, res, next) => {
+  let failure = false;
+  let data = {};
+  data["name"] = req.body.name;
+  data["dinnerType"] = req.body.dinnerType;
+  data["date"] = req.body.date;
+  data["location"] = req.body.location;
+  data["address"] = req.body.address;
+  data["capacity"] = req.body.capacity;
+  data["userid"] = req.body.userid;
+  data["locality"] = req.body.locality;
+  data["capacity"] = req.body.capacity;
+  console.log('>>>>>>>>>',data.dinnerType)
+  if (!data.name){
+    res.send({
+      success: 'failure',
+      message: 'Please enter an Event Name'
+    })
+    return
+  }
+  if (data.dinnerType === 'Cuisine'){
+    res.send({
+      success: 'failure',
+      message: 'Please select a Cuisine type'
+    })
+    return
+  }
+  if (!data.capacity){
+    res.send({
+      success: 'failure',
+      message: 'Please enter a number for how many people can attend'
+    })
+    return
+  }
+  if (!data.locality){
+    res.send({
+      success: 'failure',
+      message: 'Please select a New York Burrow for where your event will take place'
+    })
+    return
+  }
+  if (!data.location){
+    res.send({
+      success: 'failure',
+      message: 'Please select a location by clicking on one of the options below locality'
+    })
+    return
+  }
+  next()
+}
+
+
 exports.handleForm = (req, res) => {
   console.log('DATA in form handler', data);
   var data = {};

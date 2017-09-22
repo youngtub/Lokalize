@@ -32,7 +32,7 @@ exports.checkUserEvents = (req, res, next) => {
       else {
         res.send({
           success: 'failure',
-          message: 'Slow Down Party Animal, you already have an event that day, change the date and try again!!'
+          message: 'Woah Woah!!!, hold on there Cowboy, you already have an event that day, change the date and try again!!'
         })
       }
     })
@@ -67,7 +67,7 @@ exports.searchEvents = (req, res) => {
       .then(() => {
         res.send({
           success: 'success',
-          message: 'Congradulations!!! You have joined an event!!'
+          message: 'Congratulations!!! You have joined an event!!'
         });
       })
       .catch((err) => {
