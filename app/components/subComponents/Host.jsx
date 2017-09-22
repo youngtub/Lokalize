@@ -114,8 +114,6 @@ class Host extends React.Component {
           </FormGroup>
 
           <FormGroup className="EventFormField" controlId="capacity">
-          <FormGroup className="capacityField" controlId="capacity">
-
               <FormControl
                 type="number"
                 value={this.state.capacity}
