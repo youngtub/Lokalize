@@ -1,0 +1,21 @@
+.createEventForm {
+  margin: auto;
+  width: 25%;
+}
+
+.createEventHeader {
+  margin: auto;
+  width: 30%;
+}
+
+.eventName {
+  width: 200px;
+}
+
+.capacityField {
+  width: 200px;
+}
+
+.dateInput {
+  width: 200px;
+}
