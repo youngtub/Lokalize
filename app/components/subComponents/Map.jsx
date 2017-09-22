@@ -17,6 +17,7 @@ const MapWithADirectionsRenderer = compose(
   withGoogleMap,
   lifecycle({
     componentWillReceiveProps() {
+      console.log('made itt')
       let endLat = this.props.endAddress[0];
       let endLong = this.props.endAddress[1];
       const DirectionsService = new google.maps.DirectionsService();

@@ -43,6 +43,11 @@ class Home extends React.Component {
     this.setState({endAddress: endAddress}, () => {
       this.setState({endAddress: []})
       console.log(`print this ${this.state.endAddress}`)
+      if (!this.state.test) {
+        this.setState({test: 'test'})
+        return
+      }
+      this.setState({test: ''})
     })
   }
   render() {
@@ -50,7 +55,7 @@ class Home extends React.Component {
       <div>
         <Weather />,
         <Jumbotron>
-          <MapWithADirectionsRenderer endAddress={this.state.endAddress || [40.750572, -73.976417]} />,
+          <MapWithADirectionsRenderer test={this.state.test} endAddress={this.state.endAddress || [40.750572, -73.976417]} />,
         </Jumbotron>,
         <Table responsive>
           <thead>
