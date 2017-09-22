@@ -66,7 +66,7 @@ class App extends React.Component {
     })
   }
 
-  requireAuth(){
+  requireAuth() {
     return !this.state.isLoggedIn
   }
 
