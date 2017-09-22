@@ -28,6 +28,18 @@ class Host extends React.Component {
     this.capacityChange = this.capacityChange.bind(this);
   };
 
+  componentWillReceiveProps(nextProps){
+    if(nextProps.eventSuccessful){
+      this.setState({
+        name: '',
+        type: 'Cuisine',
+        date: '',
+        locationForQuery: 'Locality',
+        capacity: '',
+      })
+      $('#options').toggle();
+    }
+  }
 
   getValidationSate(key) {
     // if (this.state[key].length) return 'success';
@@ -70,19 +82,9 @@ class Host extends React.Component {
   };
 
   clickCreate(e) {
+    console.log(this.props.eventSuccessful)
     e.preventDefault();
     this.props.submitEventCallback(this.state.name, this.state.type, this.state.date, this.state.capacity);
-    if (!this.props.eventSuccessful){
-      return
-    }
-    this.setState({
-      name: '',
-      type: 'Cuisine',
-      date: '',
-      locationForQuery: 'Locality',
-      capacity: '',
-    })
-    $('#options').toggle();
   };
 
   clickCancel() {
@@ -116,20 +118,9 @@ class Host extends React.Component {
                 id="bg-nested-dropdown"
                 onSelect={this.typeChange}
               >
-                <MenuItem eventKey="American" >American</MenuItem>
-                <MenuItem eventKey="Asian" >Asian</MenuItem>
-                <MenuItem eventKey="BBQ" >BBQ</MenuItem>
-                <MenuItem eventKey="Breakfast" >Breakfast</MenuItem>
-                <MenuItem eventKey="Burger" >Burger</MenuItem>
-                <MenuItem eventKey="Cafe" >Cafe</MenuItem>
-                <MenuItem eventKey="Diner" >Diner</MenuItem>
-                <MenuItem eventKey="Fusion" >Fusion</MenuItem>
-                <MenuItem eventKey="Italian" >Italian</MenuItem>
-                <MenuItem eventKey="Mexican" >Mexican</MenuItem>
-                <MenuItem eventKey="Pizza" >Pizza</MenuItem>
-                <MenuItem eventKey="Seafood" >Seafood</MenuItem>
-                <MenuItem eventKey="Steak" >Steak</MenuItem>
-                <MenuItem eventKey="Vegetarian" >Vegetarian</MenuItem>
+              {Object.keys(ids.cuisines).sort().map(key => {
+                return <MenuItem eventKey={key} >{key}</MenuItem>
+              })}
               </DropdownButton>
             </ButtonGroup><br/><br/>
 
@@ -159,19 +150,9 @@ class Host extends React.Component {
               id="bg-nested-dropdown"
               onSelect={this.locationChange}
             >
-              <MenuItem eventKey="Chelsea" >Chelsea</MenuItem>
-              <MenuItem eventKey="East Village" >East Village</MenuItem>
-              <MenuItem eventKey="Financial District" >Financial District</MenuItem>
-              <MenuItem eventKey="Greenwich Village" >Greenwich Village</MenuItem>
-              <MenuItem eventKey="Gramercy-Flatiron" >Gramercy-Flatiron</MenuItem>
-              <MenuItem eventKey="Midtown" >Midtown</MenuItem>
-              <MenuItem eventKey="Soho" >Soho</MenuItem>
-              <MenuItem eventKey="Tribeca" >Tribeca</MenuItem>
-              <MenuItem eventKey="Union Square" >Union Square</MenuItem>
-              <MenuItem eventKey="Upper East Side" >Upper East Side</MenuItem>
-              <MenuItem eventKey="Upper West Side" >Upper West Side</MenuItem>
-              <MenuItem eventKey="Lower East Side" >Lower East Side</MenuItem>
-              <MenuItem eventKey="Hell's Kitchen" >Hell's Kitchen</MenuItem>
+            {Object.keys(ids.localities).sort().map(key => {
+              return <MenuItem eventKey={key} >{key}</MenuItem>
+            })}
             </DropdownButton>
           </ButtonGroup><br/><br/>
 
