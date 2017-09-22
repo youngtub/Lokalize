@@ -42,7 +42,7 @@ class Signup extends React.Component {
       this.setState({
         message: {
           class: 'failure',
-          message:'Please enter a username and password anf try again'
+          message:'Please enter a username and password and try again'
         }
       })
     }
