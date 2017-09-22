@@ -1,13 +1,21 @@
 import React from 'react';
 import axios from 'axios';
+import { Link } from 'react-router-dom'
 import { Button, ButtonGroup, DropdownButton, MenuItem, Form, FormGroup, ControlLabel, FormControl } from 'react-bootstrap';
 
 
 const WarningBanner = (props) => {
+
+  let html = (<div className={props.message.success}>
+                {props.message.message}
+              </div>)
+  if (props.message.success === 'success'){
+    html = (<div className={props.message.success}>
+              {props.message.message} <Link to="/home">Click here to go back to the homepage</Link>
+            </div>)
+  }
   return (
-    <div className={props.message.success}>
-      {props.message.message}
-    </div>
+    html
   );
 }
 
