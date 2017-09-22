@@ -4,10 +4,10 @@ import Home from './Home.jsx';
 import Join from './Join.jsx';
 import Create from './Create.jsx';
 import Header from './subComponents/Header.jsx';
-// import Host from './subComponents/Host.jsx';
 import Login from './subComponents/Login.jsx';
 import axios from 'axios';
 import Signup from './subComponents/Signup.jsx';
+
 
 class App extends React.Component {
   constructor(props) {
@@ -70,51 +70,28 @@ class App extends React.Component {
     return !this.state.isLoggedIn
   }
 
+  routes(reRoutePath, isAuthReq, isAuthNotReq){
+    return (
+      <Route path={reRoutePath} render={() => (
+        this.requireAuth() ? (
+        isAuthReq
+      ) : (
+        isAuthNotReq
+      )
+      )}/>
+    )
+  }
+
   render() {
     return (
       <div>
         <Header onLogout={this.onLogout} isLoggedIn={this.state.isLoggedIn}/>
         <Switch>
-          <Route path='/signup' render={() => (
-            this.requireAuth() ? (
-            <Signup onSignup={this.onSignup.bind(this)} />
-          ) : (
-            <Redirect to="/home"/>
-          )
-          )}/>
-
-          <Route path='/login' render={() => (
-            this.requireAuth() ? (
-            <Login onLogin={this.onLogin.bind(this)}/>
-          ) : (
-            <Redirect to="/home" />
-          )
-          )}/>
-
-          <Route exact path='/home' render={() => (
-            this.requireAuth() ? (
-              <Redirect to="/login"/>
-            ) : (
-              <Home username={this.state.username} />
-
-            )
-          )}/>
-
-          <Route exact path='/join' render={() => (
-            this.requireAuth() ? (
-              <Redirect to="/login"/>
-            ) : (
-              <Join user_id={this.state.uid}/>
-            )
-          )}/>
-
-          <Route exact path='/host' render={() => (
-            this.requireAuth() ? (
-              <Redirect to="/login"/>
-            ) : (
-              <Create userid={this.state.uid}/>
-            )
-          )}/>
+          {this.routes("/signup", <Signup onSignup={this.onSignup.bind(this)} />, <Redirect to="/home"/>)}
+          {this.routes("/login", <Login onLogin={this.onLogin.bind(this)}/>, <Redirect to="/home" />)}
+          {this.routes("/home", <Redirect to="/login"/>, <Home username={this.state.username} />)}
+          {this.routes('/join', <Redirect to="/login"/>, <Join user_id={this.state.uid}/>)}
+          {this.routes('/host', <Redirect to="/login"/>, <Create userid={this.state.uid}/>)}
           <Route exact path='*' render={() => (
             <Redirect to="/login"/>
           )}/>
