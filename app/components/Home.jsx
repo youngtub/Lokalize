@@ -42,6 +42,7 @@ class Home extends React.Component {
     let endAddress = e.target.value;
     endAddress = endAddress.split(',').map((number) => parseFloat(number))
     this.setState({endAddress: endAddress}, () => {
+      this.setState({endAddress: []})
       console.log(`print this ${this.state.endAddress}`)
     }) 
   }
