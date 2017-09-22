@@ -10,8 +10,12 @@ const ListEntryCreate = (props) => {
     console.log('HOST SELECTED', venue + ' @ ' + address)
     $('#options').children().css('background-color', 'white');
     $('#options').children().css('box-shadow', '');
-    $(e.target).css('box-shadow', 'inset 0 0 0 1px #27496d, inset 0 2px 30px #D3D3D0');
+    $('#options').children().css('border-width', '1px');
+    $('#options').children().css('font-weight', 'normal');
+    $(e.target).css('box-shadow', 'inset 0 0 0 1px #7caaf4, inset 0 1px 30px #7caaf4');
+    $(e.target).css('border-width', '3px');
     $(e.target).css('background-color', '#D3D3D3');
+    $(e.target).css('font-weight', 'bold');
     props.selectCallback(venue, address);
   }
 
@@ -35,7 +39,7 @@ const itemStyle = {
   borderRadius: '70px',
   padding: '10px',
   textAlign: 'center',
-  width: '425px',
+  width: '33%',
   display: 'inline-block'
 }
 
