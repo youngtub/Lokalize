@@ -75,21 +75,22 @@ class Search extends React.Component {
   // onSubmit={this.handleSubmit.bind(this)}
   render() {
     return (
-      <Form inline>
-        <FormGroup controlId="formDate">
-          <ControlLabel>Date</ControlLabel><br />
+      <div>
+      <h1 className="JoinEventHeader"> Join an Event! </h1> <br></br>
+      <Form className="EventForm">
+        <FormGroup controlId="formDate" className="EventFormField">
           <FormControl
             type="date"
             value={this.state.date}
             onChange={this.dateChange}
             placeholder="What date are you available?" />
         </FormGroup>
-        <br /><br/>
         <ButtonGroup>
           <DropdownButton
             title={this.state.address}
             id="bg-nested-dropdown"
             onSelect={this.addressChange}
+            className="EventFormField"
           >
             {Object.keys(listElements.localities).sort().map(key => {
               return <MenuItem eventKey={key} >{key}</MenuItem>
@@ -102,6 +103,7 @@ class Search extends React.Component {
           title={this.state.dinnerType}
           id="bg-nested-dropdown"
           onSelect={this.dinnerTypeChange}
+          className="EventFormField"
         >
           {Object.keys(listElements.cuisines).sort().map(key => {
             return <MenuItem eventKey={key} >{key}</MenuItem>
@@ -109,11 +111,12 @@ class Search extends React.Component {
           <MenuItem eventKey="" >No Preference</MenuItem>
         </DropdownButton>
       </ButtonGroup><br/><br/>
-        <Button type="submit" onClick={this.handleSubmit}>
+    <Button className="EventFormField" type="submit" onClick={this.handleSubmit}>
           Find My Event
         </Button>
         <WarningBanner message={this.state.message}/>
       </Form>
+      </div>
     )
   }
 };
