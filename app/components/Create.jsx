@@ -3,7 +3,22 @@ import Host from './subComponents/Host.jsx';
 import ListEntryCreate from './subComponents/ListEntryCreate.jsx';
 import { Container, Jumbotron } from 'react-bootstrap';
 import axios from 'axios';
-import {Redirect} from 'react-router-dom';
+import {Redirect, Link} from 'react-router-dom';
+
+const WarningBanner = (props) => {
+
+  let html = (<div className={props.message.success}>
+                {props.message.message}
+              </div>)
+  if (props.message.success === 'success'){
+    html = (<div className={props.message.success}>
+              {props.message.message} <Link to="/home">Click here to go back to the homepage</Link>
+            </div>)
+  }
+  return (
+    html
+  );
+}
 
 class Home extends React.Component {
   constructor(props) {
@@ -13,7 +28,12 @@ class Home extends React.Component {
       venue: '',
       address: '',
       locality: '',
-      isRestaurantSelected: false
+      isRestaurantSelected: false,
+      message: {
+        success: '',
+        message: ''
+      },
+      eventSuccessful: ''
     }
     this.restaurantsCallback = this.restaurantsCallback.bind(this);
     this.selectRestaurantCallback = this.selectRestaurantCallback.bind(this);
@@ -47,15 +67,28 @@ class Home extends React.Component {
         userid: this.props.userid,
         locality: this.state.locality
       })
-      .then( (response) => {
-        alert('Event successfully created!');
+      .then( (data) => {
+        console.log(data.data.success)
+        if (data.data.success === 'success'){
+          this.setState({
+            message: data.data,
+            eventSuccessful: true
+          })
+          return
+        }
+        this.setState({
+          message: data.data,
+          eventSuccessful: false
+        })
+
       })
   }
 
   render() {
     return (
       <div>
-        <Host getAllRestaurantsFromQuery={this.restaurantsCallback} submitEventCallback={this.submitEvent} isRestaurantSelected={this.state.isRestaurantSelected}/>
+        <WarningBanner message={this.state.message}/>
+        <Host getAllRestaurantsFromQuery={this.restaurantsCallback} eventSuccessful={this.state.eventSuccessful} submitEventCallback={this.submitEvent} isRestaurantSelected={this.state.isRestaurantSelected}/>
         <ListEntryCreate entries = {this.state.restaurants} selectCallback={this.selectRestaurantCallback}/>
       </div>
     )

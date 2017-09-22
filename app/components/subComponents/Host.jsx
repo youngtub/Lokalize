@@ -72,6 +72,9 @@ class Host extends React.Component {
   clickCreate(e) {
     e.preventDefault();
     this.props.submitEventCallback(this.state.name, this.state.type, this.state.date, this.state.capacity);
+    if (!this.props.eventSuccessful){
+      return
+    }
     this.setState({
       name: '',
       type: 'Cuisine',
@@ -127,7 +130,6 @@ class Host extends React.Component {
                 <MenuItem eventKey="Seafood" >Seafood</MenuItem>
                 <MenuItem eventKey="Steak" >Steak</MenuItem>
                 <MenuItem eventKey="Vegetarian" >Vegetarian</MenuItem>
-                <MenuItem eventKey="" >No Preference</MenuItem>
               </DropdownButton>
             </ButtonGroup><br/><br/>
 
