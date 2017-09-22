@@ -2,6 +2,7 @@ import React from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom'
 import { Button, ButtonGroup, DropdownButton, MenuItem, Form, FormGroup, ControlLabel, FormControl } from 'react-bootstrap';
+import listElements from '../../lib/idReferencesForApi.js'
 
 
 const WarningBanner = (props) => {
@@ -90,22 +91,9 @@ class Search extends React.Component {
             id="bg-nested-dropdown"
             onSelect={this.addressChange}
           >
-            <MenuItem eventKey="Chelsea" >Chelsea</MenuItem>
-            <MenuItem eventKey="East Village" >East Village</MenuItem>
-            <MenuItem eventKey="Financial District" >Financial District</MenuItem>
-            <MenuItem eventKey="Flatiron" >Flatiron</MenuItem>
-            <MenuItem eventKey="Gramercy" >Gramercy</MenuItem>
-            <MenuItem eventKey="Greenwich Village" >Greenwich Village</MenuItem>
-            <MenuItem eventKey="Hell's Kitchen" >Hells Kitchen</MenuItem>
-            <MenuItem eventKey="Lower East Side" >Lower East Side</MenuItem>
-            <MenuItem eventKey="Lower West Side" >Lower West Side</MenuItem>
-            <MenuItem eventKey="Midtown" >Midtown</MenuItem>
-            <MenuItem eventKey="Soho" >Soho</MenuItem>
-            <MenuItem eventKey="Tribeca" >Tribeca</MenuItem>
-            <MenuItem eventKey="Union Square" >Union Square</MenuItem>
-            <MenuItem eventKey="Upper East Side" >Upper East Side</MenuItem>
-            <MenuItem eventKey="Upper West Side" >Upper West Side</MenuItem>
-            <MenuItem eventKey="West Village" >West Village</MenuItem>
+            {Object.keys(listElements.localities).sort().map(key => {
+              return <MenuItem eventKey={key} >{key}</MenuItem>
+            })}
             <MenuItem eventKey="" >No Preference</MenuItem>
           </DropdownButton>
         </ButtonGroup><br/><br/>
@@ -115,20 +103,9 @@ class Search extends React.Component {
           id="bg-nested-dropdown"
           onSelect={this.dinnerTypeChange}
         >
-          <MenuItem eventKey="American" >American</MenuItem>
-          <MenuItem eventKey="Asian" >Asian</MenuItem>
-          <MenuItem eventKey="BBQ" >BBQ</MenuItem>
-          <MenuItem eventKey="Breakfast" >Breakfast</MenuItem>
-          <MenuItem eventKey="Burger" >Burger</MenuItem>
-          <MenuItem eventKey="Cafe" >Cafe</MenuItem>
-          <MenuItem eventKey="Diner" >Diner</MenuItem>
-          <MenuItem eventKey="Fusion" >Fusion</MenuItem>
-          <MenuItem eventKey="Italian" >Italian</MenuItem>
-          <MenuItem eventKey="Mexican" >Mexican</MenuItem>
-          <MenuItem eventKey="Pizza" >Pizza</MenuItem>
-          <MenuItem eventKey="Seafood" >Seafood</MenuItem>
-          <MenuItem eventKey="Steak" >Steak</MenuItem>
-          <MenuItem eventKey="Vegetarian" >Vegetarian</MenuItem>
+          {Object.keys(listElements.cuisines).sort().map(key => {
+            return <MenuItem eventKey={key} >{key}</MenuItem>
+          })}
           <MenuItem eventKey="" >No Preference</MenuItem>
         </DropdownButton>
       </ButtonGroup><br/><br/>

@@ -23,7 +23,7 @@ const handleUserEvent = (req, res) => {
     join events on events.id = participations.event_id
     where username = '${username}'
       and date >= current_date
-    order by date desc`, { type: sequelize.QueryTypes.SELECT})
+    order by date`, { type: sequelize.QueryTypes.SELECT})
     .then(user => {
       res.send(user)
     })

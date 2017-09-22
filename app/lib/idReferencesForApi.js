@@ -31,4 +31,37 @@ exports.localities = {
   "Hell's Kitchen": "114130"
 }
 
-//entity_type = 'subzone'
+let oldLocalities = `
+  <MenuItem eventKey="Chelsea" >Chelsea</MenuItem>
+  <MenuItem eventKey="East Village" >East Village</MenuItem>
+  <MenuItem eventKey="Financial District" >Financial District</MenuItem>
+  <MenuItem eventKey="Flatiron" >Flatiron</MenuItem>
+  <MenuItem eventKey="Gramercy" >Gramercy</MenuItem>
+  <MenuItem eventKey="Greenwich Village" >Greenwich Village</MenuItem>
+  <MenuItem eventKey="Hell's Kitchen" >Hells Kitchen</MenuItem>
+  <MenuItem eventKey="Lower East Side" >Lower East Side</MenuItem>
+  <MenuItem eventKey="Lower West Side" >Lower West Side</MenuItem>
+  <MenuItem eventKey="Midtown" >Midtown</MenuItem>
+  <MenuItem eventKey="Soho" >Soho</MenuItem>
+  <MenuItem eventKey="Tribeca" >Tribeca</MenuItem>
+  <MenuItem eventKey="Union Square" >Union Square</MenuItem>
+  <MenuItem eventKey="Upper East Side" >Upper East Side</MenuItem>
+  <MenuItem eventKey="Upper West Side" >Upper West Side</MenuItem>
+  <MenuItem eventKey="West Village" >West Village</MenuItem>`
+
+
+let oldMenuOptions = `
+  <MenuItem eventKey="American" >American</MenuItem>
+  <MenuItem eventKey="Asian" >Asian</MenuItem>
+  <MenuItem eventKey="BBQ" >BBQ</MenuItem>
+  <MenuItem eventKey="Breakfast" >Breakfast</MenuItem>
+  <MenuItem eventKey="Burger" >Burger</MenuItem>
+  <MenuItem eventKey="Cafe" >Cafe</MenuItem>
+  <MenuItem eventKey="Diner" >Diner</MenuItem>
+  <MenuItem eventKey="Fusion" >Fusion</MenuItem>
+  <MenuItem eventKey="Italian" >Italian</MenuItem>
+  <MenuItem eventKey="Mexican" >Mexican</MenuItem>
+  <MenuItem eventKey="Pizza" >Pizza</MenuItem>
+  <MenuItem eventKey="Seafood" >Seafood</MenuItem>
+  <MenuItem eventKey="Steak" >Steak</MenuItem>
+  <MenuItem eventKey="Vegetarian" >Vegetarian</MenuItem>`
