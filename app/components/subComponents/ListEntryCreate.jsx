@@ -12,7 +12,7 @@ const ListEntryCreate = (props) => {
     $('#options').children().css('box-shadow', '');
     $('#options').children().css('border-width', '1px');
     $('#options').children().css('font-weight', 'normal');
-    $(e.target).css('box-shadow', 'inset 0 0 0 1px #7caaf4, inset 0 1px 30px #7caaf4');
+    $(e.target).css('box-shadow', 'inset 0 0 0 1px #80b0fc, inset 0 1px 30px #80b0fc');
     $(e.target).css('border-width', '3px');
     $(e.target).css('background-color', '#D3D3D3');
     $(e.target).css('font-weight', 'bold');
@@ -37,7 +37,7 @@ const itemStyle = {
   border: 'solid black',
   borderWidth: '1px',
   borderRadius: '70px',
-  padding: '10px',
+  padding: '1px',
   textAlign: 'center',
   width: '33%',
   display: 'inline-block'

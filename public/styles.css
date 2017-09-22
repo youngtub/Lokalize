@@ -1,0 +1,19 @@
+
+.EventForm {
+  margin: auto;
+  width: 25%;
+}
+
+.CreateEventHeader {
+  margin: auto;
+  width: 30%;
+}
+
+.JoinEventHeader {
+  margin: auto;
+  width: 28%;
+}
+
+.EventFormField {
+  width: 200px;
+}

@@ -100,9 +100,10 @@ class Host extends React.Component {
   render() {
     return (
       <div>
-        <Form>
+        <h1 className="CreateEventHeader"> Create an Event! </h1> <br></br>
+        <Form className="EventForm">
 
-          <FormGroup className="eventName" controlId="name" validationState={this.getValidationSate(this.state.name)}>
+          <FormGroup className="EventFormField" controlId="name" validationState={this.getValidationSate(this.state.name)}>
             <FormControl
               type="text"
               value={this.state.name}
@@ -112,29 +113,17 @@ class Host extends React.Component {
             <FormControl.Feedback />
           </FormGroup>
 
-            <ButtonGroup>
-              <DropdownButton
-                title={this.state.type}
-                id="bg-nested-dropdown"
-                onSelect={this.typeChange}
-              >
-              {Object.keys(ids.cuisines).sort().map(key => {
-                return <MenuItem eventKey={key} >{key}</MenuItem>
-              })}
-              </DropdownButton>
-            </ButtonGroup><br/><br/>
-
-          <FormGroup className="capacityField" controlId="capacity">
+          <FormGroup className="EventFormField" controlId="capacity">
               <FormControl
                 type="number"
                 value={this.state.capacity}
-                placeholder="How many people can come?"
+                placeholder="Number of guests"
                 onChange={this.capacityChange}
               />
               <FormControl.Feedback />
             </FormGroup>
 
-          <FormGroup controlId="date" validationState={this.getValidationSate(this.state.date)}>
+          <FormGroup className="EventFormField" controlId="date" validationState={this.getValidationSate(this.state.date)}>
             <FormControl
               type="date"
               value={this.state.date}
@@ -144,11 +133,25 @@ class Host extends React.Component {
             <FormControl.Feedback />
           </FormGroup>
 
+            <ButtonGroup>
+              <DropdownButton
+                title={this.state.type}
+                id="bg-nested-dropdown"
+                onSelect={this.typeChange}
+                className="EventFormField"
+              >
+              {Object.keys(ids.cuisines).sort().map(key => {
+                return <MenuItem eventKey={key} >{key}</MenuItem>
+              })}
+              </DropdownButton>
+            </ButtonGroup><br/><br/>
+            
           <ButtonGroup>
             <DropdownButton
               title={this.state.locationForQuery}
               id="bg-nested-dropdown"
               onSelect={this.locationChange}
+              className="EventFormField"
             >
             {Object.keys(ids.localities).sort().map(key => {
               return <MenuItem eventKey={key} >{key}</MenuItem>
@@ -157,10 +160,10 @@ class Host extends React.Component {
           </ButtonGroup><br/><br/>
 
           <ButtonToolbar>
-            {!this.props.isRestaurantSelected ? '' :
+            <Button bsStyle="warning" bsSize="small" type="reset" onClick={this.clickCancel}>Nevermind</Button><br></br>
+
             <Button bsStyle="primary" bsSize="large" type="submit" onClick={this.clickCreate}>Create Event</Button>
-            }
-          <Button bsStyle="warning" bsSize="small" type="reset" onClick={this.clickCancel}>Nevermind</Button>
+            
           </ButtonToolbar><br/>
         </Form>
       </div>
