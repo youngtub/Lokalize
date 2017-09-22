@@ -53,8 +53,6 @@ class Home extends React.Component {
   render() {
     return (
       <div>
-        <Jumbotron>
-        </Jumbotron>,
         <Host getAllRestaurantsFromQuery={this.restaurantsCallback} submitEventCallback={this.submitEvent}/>
         <ListEntryCreate entries = {this.state.restaurants} selectCallback={this.selectRestaurantCallback}/>
       </div>
