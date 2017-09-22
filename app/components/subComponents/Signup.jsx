@@ -36,13 +36,13 @@ class Signup extends React.Component {
   }
 
   checkUsernamePassword (event) {
-    if ((this.state.username.length > 5 && this.state.username.length < 13) && (this.state.password.length > 5 && this.state.password.length < 13)) {
+    if ((this.state.username.length > 0) && (this.state.password.length > 0)) {
         this.props.onSignup(this.state.username, this.state.password)
     } else {
       this.setState({
         message: {
           class: 'failure',
-          message:'Password or username did not meet requirements. Please try again.'
+          message:'Please enter a username and password and try again'
         }
       })
     }

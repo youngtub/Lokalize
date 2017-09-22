@@ -19,9 +19,10 @@ exports.handleSignup = (req, res) => {
       })
       .then((newUser) => {
         if (newUser) {
-          res.send(true);
+          res.send(JSON.stringify(newUser.id));
         } else {
           console.error('Error:', err);
+          res.send(false);
         }
       })
       .catch((err) => {
