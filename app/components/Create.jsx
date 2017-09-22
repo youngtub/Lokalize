@@ -12,7 +12,8 @@ class Home extends React.Component {
       restaurants: [],
       venue: '',
       address: '',
-      locality: ''
+      locality: '',
+      isRestaurantSelected: false
     }
     this.restaurantsCallback = this.restaurantsCallback.bind(this);
     this.selectRestaurantCallback = this.selectRestaurantCallback.bind(this);
@@ -29,7 +30,8 @@ class Home extends React.Component {
   selectRestaurantCallback(venue, address) {
     this.setState({
       venue: venue,
-      address: address
+      address: address,
+      isRestaurantSelected: true
     })
   }
 
@@ -53,7 +55,7 @@ class Home extends React.Component {
   render() {
     return (
       <div>
-        <Host getAllRestaurantsFromQuery={this.restaurantsCallback} submitEventCallback={this.submitEvent}/>
+        <Host getAllRestaurantsFromQuery={this.restaurantsCallback} submitEventCallback={this.submitEvent} isRestaurantSelected={this.state.isRestaurantSelected}/>
         <ListEntryCreate entries = {this.state.restaurants} selectCallback={this.selectRestaurantCallback}/>
       </div>
     )
