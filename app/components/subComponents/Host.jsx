@@ -89,6 +89,7 @@ class Host extends React.Component {
       date: '',
       location: ''
     })
+    $('#options').toggle();
   };
 
   render() {
@@ -96,7 +97,7 @@ class Host extends React.Component {
       <div>
         <Form>
 
-          <FormGroup controlId="name" validationState={this.getValidationSate(this.state.name)}>
+          <FormGroup className="eventName" controlId="name" validationState={this.getValidationSate(this.state.name)}>
             <FormControl
               type="text"
               value={this.state.name}
@@ -130,7 +131,7 @@ class Host extends React.Component {
               </DropdownButton>
             </ButtonGroup><br/><br/>
 
-          <FormGroup controlId="capacity">
+          <FormGroup className="capacityField" controlId="capacity">
               <FormControl
                 type="number"
                 value={this.state.capacity}
@@ -175,9 +176,10 @@ class Host extends React.Component {
           <ButtonToolbar>
             <Button bsStyle="primary" bsSize="large" type="submit" onClick={this.clickCreate}>Create Event</Button>
             <Button bsStyle="warning" bsSize="small" type="reset" onClick={this.clickCancel}>Nevermind</Button>
-          </ButtonToolbar>
+          </ButtonToolbar><br/>
         </Form>
       </div>
+
     )
   }
 };
