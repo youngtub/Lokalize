@@ -7,9 +7,12 @@ class Header extends React.Component {
     super(props);
 
     this.state = {
-      isActive: false
+      isActive: false,
+      toggleOn: false
+
     }
     this.toggle = this.navClick.bind(this);
+    // this.toggle = this.navToggle.bind(this);
   }
 
   navClick() {
@@ -17,6 +20,12 @@ class Header extends React.Component {
       isActive: !this.state.isActive
     });
   }
+
+  // navToggle() {
+  //   this.setState({
+  //     toggleOn: !this.state.toggleOn
+  //   })
+  // }
 
   render() {
     return (
@@ -29,10 +38,12 @@ class Header extends React.Component {
             <Navbar.Toggle />
           </Navbar.Header>
           <Navbar.Collapse>
-        <Nav>
-          <NavItem eventKey={1} href="#"><Link to="/join">Join Event</Link></NavItem>
-          <NavItem eventKey={2} href="#"><Link to="/host">Host Event</Link></NavItem>
-        </Nav>
+          {!this.props.isLoggedIn ? '' :
+          <Nav>
+            <NavItem eventKey={1} href="#"><Link to="/join">Join Event</Link></NavItem>
+            <NavItem eventKey={2} href="#"><Link to="/host">Host Event</Link></NavItem>
+          </Nav>}
+
         <Nav pullRight>
           <NavItem eventKey={1} href="#" onClick={this.props.onLogout}>Log Out</NavItem>
         </Nav>

@@ -73,7 +73,7 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        <Header onLogout={this.onLogout} requireAuth={this.requireAuth}/>
+        <Header onLogout={this.onLogout} isLoggedIn={this.state.isLoggedIn}/>
         <Switch>
           <Route path='/signup' render={() => (
             this.requireAuth() ? (
