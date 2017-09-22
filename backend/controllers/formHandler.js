@@ -25,7 +25,6 @@ exports.formChecks = (req, res, next) => {
   data["userid"] = req.body.userid;
   data["locality"] = req.body.locality;
   data["capacity"] = req.body.capacity;
-  console.log('>>>>>>>>>',data.dinnerType)
   if (!data.name){
     res.send({
       success: 'failure',
@@ -124,7 +123,10 @@ exports.handleForm = (req, res) => {
         })
       })
       .then((data) => {
-        res.send('Event Created')
+        res.send({
+          message: 'Event Created Successfully!!',
+          success: 'success'
+        })
       })
       .catch(err => {
         console.log(err)

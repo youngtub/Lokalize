@@ -3,7 +3,7 @@ import Host from './subComponents/Host.jsx';
 import ListEntryCreate from './subComponents/ListEntryCreate.jsx';
 import { Container, Jumbotron } from 'react-bootstrap';
 import axios from 'axios';
-import {Redirect} from 'react-router-dom';
+import {Redirect, Link} from 'react-router-dom';
 
 const WarningBanner = (props) => {
 
@@ -28,7 +28,7 @@ class Home extends React.Component {
       venue: '',
       address: '',
       locality: '',
-      isRestaurantSelected: false
+      isRestaurantSelected: false,
       message: {
         success: '',
         message: ''
@@ -68,6 +68,7 @@ class Home extends React.Component {
         locality: this.state.locality
       })
       .then( (data) => {
+        console.log(data.data.success)
         if (data.data.success === 'success'){
           this.setState({
             message: data.data,
@@ -87,7 +88,7 @@ class Home extends React.Component {
     return (
       <div>
         <WarningBanner message={this.state.message}/>
-        <Host getAllRestaurantsFromQuery={this.restaurantsCallback} submitEventCallback={this.submitEvent} isRestaurantSelected={this.state.isRestaurantSelected}/>
+        <Host getAllRestaurantsFromQuery={this.restaurantsCallback} eventSuccessful={this.state.eventSuccessful} submitEventCallback={this.submitEvent} isRestaurantSelected={this.state.isRestaurantSelected}/>
         <ListEntryCreate entries = {this.state.restaurants} selectCallback={this.selectRestaurantCallback}/>
       </div>
     )

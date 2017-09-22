@@ -9,7 +9,7 @@ const Participations = require('../models/usersEventsSchema.js');
 
 
 exports.checkUserEvents = (req, res, next) => {
-  let user_id = req.body.user_id;
+  let user_id = req.body.user_id || req.body.userid ;
   let date = req.body.date;
   if (!req.body.date) {
     res.send({

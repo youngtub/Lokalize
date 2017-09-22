@@ -72,6 +72,9 @@ class Host extends React.Component {
   clickCreate(e) {
     e.preventDefault();
     this.props.submitEventCallback(this.state.name, this.state.type, this.state.date, this.state.capacity);
+    if (!this.props.eventSuccessful){
+      return
+    }
     this.setState({
       name: '',
       type: 'Cuisine',
