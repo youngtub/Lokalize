@@ -61,9 +61,6 @@ class Login extends React.Component {
             Create Account
           </Button>
         </Link>
-        <Button bsSize="lg" onClick={this.onSubmit}>
-          Login
-        </Button>
       </div>
     )
   }

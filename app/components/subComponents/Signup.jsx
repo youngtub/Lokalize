@@ -47,7 +47,7 @@ class Signup extends React.Component {
       })
     }
   }
-  
+
   getValidationState(value) {
     const length = value.length;
     if (length > 10) return 'success';
