@@ -1,18 +1,38 @@
+<<<<<<< HEAD
 .EventForm {
+=======
+.createEventForm {
+>>>>>>> centered and styled form
   margin: auto;
   width: 25%;
 }
 
+<<<<<<< HEAD
 .CreateEventHeader {
+=======
+.createEventHeader {
+>>>>>>> centered and styled form
   margin: auto;
   width: 30%;
 }
 
+<<<<<<< HEAD
 .JoinEventHeader {
   margin: auto;
   width: 28%;
 }
 
 .EventFormField {
+=======
+.eventName {
+  width: 200px;
+}
+
+.capacityField {
+  width: 200px;
+}
+
+.dateInput {
+>>>>>>> centered and styled form
   width: 200px;
 }
