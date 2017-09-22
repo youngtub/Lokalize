@@ -113,20 +113,6 @@ class Host extends React.Component {
             <FormControl.Feedback />
           </FormGroup>
 
-            <ButtonGroup>
-              <DropdownButton
-                title={this.state.type}
-                id="bg-nested-dropdown"
-                onSelect={this.typeChange}
-                className="EventFormField"
-              >
-              {Object.keys(ids.cuisines).sort().map(key => {
-                return <MenuItem eventKey={key} >{key}</MenuItem>
-              })}
-              </DropdownButton>
-            </ButtonGroup><br/><br/>
-
-
           <FormGroup className="EventFormField" controlId="capacity">
           <FormGroup className="capacityField" controlId="capacity">
 
@@ -149,29 +135,19 @@ class Host extends React.Component {
             <FormControl.Feedback />
           </FormGroup>
 
-          <ButtonGroup>
-            <DropdownButton
-              title={this.state.type}
-              id="bg-nested-dropdown"
-              onSelect={this.typeChange}
-            >
-              <MenuItem eventKey="American" >American</MenuItem>
-              <MenuItem eventKey="Asian" >Asian</MenuItem>
-              <MenuItem eventKey="BBQ" >BBQ</MenuItem>
-              <MenuItem eventKey="Breakfast" >Breakfast</MenuItem>
-              <MenuItem eventKey="Burger" >Burger</MenuItem>
-              <MenuItem eventKey="Cafe" >Cafe</MenuItem>
-              <MenuItem eventKey="Diner" >Diner</MenuItem>
-              <MenuItem eventKey="Fusion" >Fusion</MenuItem>
-              <MenuItem eventKey="Italian" >Italian</MenuItem>
-              <MenuItem eventKey="Mexican" >Mexican</MenuItem>
-              <MenuItem eventKey="Pizza" >Pizza</MenuItem>
-              <MenuItem eventKey="Seafood" >Seafood</MenuItem>
-              <MenuItem eventKey="Steak" >Steak</MenuItem>
-              <MenuItem eventKey="Vegetarian" >Vegetarian</MenuItem>
-            </DropdownButton>
-          </ButtonGroup><br/><br/>
-
+            <ButtonGroup>
+              <DropdownButton
+                title={this.state.type}
+                id="bg-nested-dropdown"
+                onSelect={this.typeChange}
+                className="EventFormField"
+              >
+              {Object.keys(ids.cuisines).sort().map(key => {
+                return <MenuItem eventKey={key} >{key}</MenuItem>
+              })}
+              </DropdownButton>
+            </ButtonGroup><br/><br/>
+            
           <ButtonGroup>
             <DropdownButton
               title={this.state.locationForQuery}
