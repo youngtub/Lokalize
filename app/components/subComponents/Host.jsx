@@ -100,7 +100,8 @@ class Host extends React.Component {
   render() {
     return (
       <div>
-        <Form>
+        <h1 className="createEventHeader"> Create an Event! </h1> <br></br>
+        <Form className="createEventForm">
 
           <FormGroup className="eventName" controlId="name" validationState={this.getValidationSate(this.state.name)}>
             <FormControl
@@ -128,13 +129,13 @@ class Host extends React.Component {
               <FormControl
                 type="number"
                 value={this.state.capacity}
-                placeholder="How many people can come?"
+                placeholder="Number of guests"
                 onChange={this.capacityChange}
               />
               <FormControl.Feedback />
             </FormGroup>
 
-          <FormGroup controlId="date" validationState={this.getValidationSate(this.state.date)}>
+          <FormGroup className="dateInput" controlId="date" validationState={this.getValidationSate(this.state.date)}>
             <FormControl
               type="date"
               value={this.state.date}
