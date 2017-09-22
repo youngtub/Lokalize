@@ -1,5 +1,5 @@
 import React from 'react';
-import {Button, FormControl, FormGroup} from 'react-bootstrap';
+import {Form, Button, FormControl, FormGroup} from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 
 class Login extends React.Component {
@@ -26,15 +26,38 @@ class Login extends React.Component {
     this.props.onLogin(this.state.username, this.state.password)
   }
 
+  getValidationState(key) {
+    // if (this.state[key].length) return 'success';
+    // else if (this.state[key].length > 25) return 'warning';
+    // else { return 'error'; };
+  };
+
+
   render() {
     return (
       <div className="modal-container">
-        <form action="/action_page.php">
-          Username: <input type="text" name="fname" onChange={this.usernameChange}/><br/>
-          Password: <input type="password" name="lname" onChange={this.passwordChange}/>
-        </form>
+        <Form >
+          <FormGroup controlId="name" validationState={this.getValidationState(this.state.username)}>
+            <FormControl
+              type="text"
+              value={this.state.username}
+              placeholder="username"
+              onChange={this.usernameChange}
+            />
+            <FormControl.Feedback />
+          </FormGroup>
+          <FormGroup controlId="name" validationState={this.getValidationState(this.state.password)}>
+            <FormControl
+              type="password"
+              value={this.state.password}
+              placeholder="password"
+              onChange={this.passwordChange}
+            />
+            <FormControl.Feedback />
+          </FormGroup>
+        </Form>
         <Link to="/signup">
-          <Button bsSize="lg">
+          <Button className="create-account" bsSize="lg" onClick={() => {<Redirect to="/signup" />}}>
             Create Account
           </Button>
         </Link>
