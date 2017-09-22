@@ -50,7 +50,7 @@ class Home extends React.Component {
         <Jumbotron>
           <MapWithADirectionsRenderer endAddress={this.state.endAddress || [40.750572, -73.976417]} />,
         </Jumbotron>,
-        <Table responsive>
+        <Table responsive >
           <thead>
             <tr>
               <th>Event</th>

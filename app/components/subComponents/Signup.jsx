@@ -1,5 +1,5 @@
 import React from 'react';
-import {Button} from 'react-bootstrap';
+import {Button, Form, FormControl, FormGroup} from 'react-bootstrap';
 import Axios from 'axios';
 
 const SignupWarning = (props) => {
@@ -47,14 +47,39 @@ class Signup extends React.Component {
       })
     }
   }
+  
+  getValidationState(value) {
+    const length = value.length;
+    if (length > 10) return 'success';
+    else if (length > 5) return 'warning';
+    else if (length > 0) return 'error';
+  }
 
   render() {
     return(
       <div>
-          Username: <input type="text" value={this.state.username} onChange={this.handleUsernameChange.bind(this)}/>
-          Password: <input type="password" value={this.state.password} onChange={this.handlePasswordChange.bind(this)}/>
+         <Form >
+          <FormGroup controlId="name" validationState={this.getValidationState(this.state.username)}>
+            <FormControl
+              type="text"
+              value={this.state.username}
+              placeholder="username"
+              onChange={this.handleUsernameChange}
+            />
+            <FormControl.Feedback />
+          </FormGroup>
+          <FormGroup controlId="name" validationState={this.getValidationState(this.state.password)}>
+            <FormControl
+              type="text"
+              value={this.state.password}
+              placeholder="password"
+              onChange={this.handlePasswordChange}
+            />
+            <FormControl.Feedback />
+          </FormGroup>
         <Button type="submit" value="Submit" onClick={this.checkUsernamePassword.bind(this)}>Create My Account</Button><br/>
         <SignupWarning message={this.state.message}/>
+        </Form>
       </div>
       )
   }

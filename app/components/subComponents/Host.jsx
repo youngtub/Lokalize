@@ -90,9 +90,10 @@ class Host extends React.Component {
   clickCancel() {
     this.setState({
       name: '',
-      type: '',
+      type: 'Cuisine',
       date: '',
-      location: ''
+      locationForQuery: 'Locality',
+      capacity: '',
     })
     $('#options').toggle();
   };
