@@ -174,8 +174,10 @@ class Host extends React.Component {
           </ButtonGroup><br/><br/>
 
           <ButtonToolbar>
+            {!this.props.isRestaurantSelected ? '' :
             <Button bsStyle="primary" bsSize="large" type="submit" onClick={this.clickCreate}>Create Event</Button>
-            <Button bsStyle="warning" bsSize="small" type="reset" onClick={this.clickCancel}>Nevermind</Button>
+            }
+          <Button bsStyle="warning" bsSize="small" type="reset" onClick={this.clickCancel}>Nevermind</Button>
           </ButtonToolbar><br/>
         </Form>
       </div>
