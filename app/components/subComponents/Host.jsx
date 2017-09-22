@@ -145,7 +145,7 @@ class Host extends React.Component {
               })}
               </DropdownButton>
             </ButtonGroup><br/><br/>
-            
+
           <ButtonGroup>
             <DropdownButton
               title={this.state.locationForQuery}
@@ -160,10 +160,10 @@ class Host extends React.Component {
           </ButtonGroup><br/><br/>
 
           <ButtonToolbar>
-            <Button bsStyle="warning" bsSize="small" type="reset" onClick={this.clickCancel}>Nevermind</Button><br></br>
+            <Button bsStyle="warning" bsSize="small" type="reset" onClick={this.clickCancel}>Nevermind</Button><br></br><br></br>
 
             <Button bsStyle="primary" bsSize="large" type="submit" onClick={this.clickCreate}>Create Event</Button>
-            
+
           </ButtonToolbar><br/>
         </Form>
       </div>

@@ -28,19 +28,19 @@ class Login extends React.Component {
 
   render() {
     return (
-      <div className="modal-container">
-        <form action="/action_page.php">
+      <div className="modal-container, EventForm">
+        <form action="/action_page.php" className="LoginForm">
           Username: <input type="text" name="fname" onChange={this.usernameChange}/><br/>
           Password: <input type="password" name="lname" onChange={this.passwordChange}/>
-        </form>
+      </form><br></br>
+        <Button bsSize="sm" onClick={this.onSubmit}>
+          Login
+        </Button>
         <Link to="/signup">
-          <Button bsSize="lg">
+          <Button bsSize="sm">
             Create Account
           </Button>
         </Link>
-        <Button bsSize="lg" onClick={this.onSubmit}>
-          Login
-        </Button>
       </div>
     )
   }

@@ -50,9 +50,9 @@ class Signup extends React.Component {
 
   render() {
     return(
-      <div>
-          Username: <input type="text" value={this.state.username} onChange={this.handleUsernameChange.bind(this)}/>
-          Password: <input type="password" value={this.state.password} onChange={this.handlePasswordChange.bind(this)}/>
+      <div className="LoginForm, EventForm">
+          Username: <input type="text" value={this.state.username} onChange={this.handleUsernameChange.bind(this)}/><br></br>
+          Password: <input type="password" value={this.state.password} onChange={this.handlePasswordChange.bind(this)}/><br></br><br></br>
         <Button type="submit" value="Submit" onClick={this.checkUsernamePassword.bind(this)}>Create My Account</Button><br/>
         <SignupWarning message={this.state.message}/>
       </div>
