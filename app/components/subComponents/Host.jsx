@@ -126,10 +126,10 @@ class Host extends React.Component {
               </DropdownButton>
             </ButtonGroup><br/><br/>
 
-<<<<<<< HEAD
+
           <FormGroup className="EventFormField" controlId="capacity">
           <FormGroup className="capacityField" controlId="capacity">
->>>>>>> small changes
+
               <FormControl
                 type="number"
                 value={this.state.capacity}
@@ -187,9 +187,9 @@ class Host extends React.Component {
 
           <ButtonToolbar>
             <Button bsStyle="warning" bsSize="small" type="reset" onClick={this.clickCancel}>Nevermind</Button><br></br>
-            {!this.props.isRestaurantSelected ? '' :
+
             <Button bsStyle="primary" bsSize="large" type="submit" onClick={this.clickCreate}>Create Event</Button>
-            }
+            
           </ButtonToolbar><br/>
         </Form>
       </div>

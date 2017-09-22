@@ -1,5 +1,6 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 .EventForm {
 =======
 .createEventForm {
@@ -7,10 +8,14 @@
 =======
 .EventForm {
 >>>>>>> forms centered, create and nevermind buttons still wonky
+=======
+.EventForm {
+>>>>>>> create
   margin: auto;
   width: 25%;
 }
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 .CreateEventHeader {
@@ -20,10 +25,14 @@
 =======
 .CreateEventHeader {
 >>>>>>> forms centered, create and nevermind buttons still wonky
+=======
+.CreateEventHeader {
+>>>>>>> create
   margin: auto;
   width: 30%;
 }
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 .JoinEventHeader {
@@ -44,12 +53,17 @@
 .dateInput {
 >>>>>>> centered and styled form
 =======
+=======
+>>>>>>> create
 .JoinEventHeader {
   margin: auto;
   width: 28%;
 }
 
 .EventFormField {
+<<<<<<< HEAD
 >>>>>>> forms centered, create and nevermind buttons still wonky
+=======
+>>>>>>> create
   width: 200px;
 }
