@@ -31,7 +31,7 @@ class Login extends React.Component {
       <div className="modal-container">
         <form action="/action_page.php">
           Username: <input type="text" name="fname" onChange={this.usernameChange}/><br/>
-          Password: <input type="text" name="lname" onChange={this.passwordChange}/>
+          Password: <input type="password" name="lname" onChange={this.passwordChange}/>
         </form>
         <Link to="/signup">
           <Button bsSize="lg">
