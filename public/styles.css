@@ -1,69 +1,19 @@
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
+
 .EventForm {
-=======
-.createEventForm {
->>>>>>> centered and styled form
-=======
-.EventForm {
->>>>>>> forms centered, create and nevermind buttons still wonky
-=======
-.EventForm {
->>>>>>> create
   margin: auto;
   width: 25%;
 }
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
 .CreateEventHeader {
-=======
-.createEventHeader {
->>>>>>> centered and styled form
-=======
-.CreateEventHeader {
->>>>>>> forms centered, create and nevermind buttons still wonky
-=======
-.CreateEventHeader {
->>>>>>> create
   margin: auto;
   width: 30%;
 }
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
 .JoinEventHeader {
   margin: auto;
   width: 28%;
 }
 
 .EventFormField {
-=======
-.eventName {
-  width: 200px;
-}
-
-.capacityField {
-  width: 200px;
-}
-
-.dateInput {
->>>>>>> centered and styled form
-=======
-=======
->>>>>>> create
-.JoinEventHeader {
-  margin: auto;
-  width: 28%;
-}
-
-.EventFormField {
-<<<<<<< HEAD
->>>>>>> forms centered, create and nevermind buttons still wonky
-=======
->>>>>>> create
   width: 200px;
 }
