@@ -10,7 +10,7 @@ const ListEntryCreate = (props) => {
     console.log('HOST SELECTED', venue + ' @ ' + address)
     $('#options').children().css('background-color', 'white');
     $('#options').children().css('box-shadow', '');
-    $(e.target).css('box-shadow', 'inset 0 0 0 1px #27496d,inset 0 2px 30px #193047');
+    $(e.target).css('box-shadow', 'inset 0 0 0 1px #27496d, inset 0 2px 30px #D3D3D0');
     $(e.target).css('background-color', '#D3D3D3');
     props.selectCallback(venue, address);
   }
